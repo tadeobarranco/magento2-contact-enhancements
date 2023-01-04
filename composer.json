@@ -1,0 +1,22 @@
+{
+    "name": "barranco/magento2-contact",
+    "description": "Module to save the data from the default Magento contact form",
+    "type": "magento2-module",
+    "version": "100.0.0",
+    "require": {
+        "php": "~7.4.0||~8.1.0",
+        "magento/module-contact": "100.4.*"
+    },
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Barranco\\Contact\\": ""
+        }
+    }
+}
