@@ -5,7 +5,9 @@
             "name": true,
             "email": true,
             "phone": true,
-            "comment": true
+            "comment": true,
+            "created_at": true,
+            "updated_at": true
         },
         "constraint": {
             "PRIMARY": true

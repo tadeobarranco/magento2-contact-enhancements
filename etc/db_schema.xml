@@ -12,6 +12,8 @@
         <column xsi:type="varchar" name="email" nullable="false" length="255" comment="Contact Email"/>
         <column xsi:type="varchar" name="phone" nullable="true" length="255" comment="Contact Phone Number"/>
         <column xsi:type="mediumtext" name="comment" nullable="false" comment="Contact Comment"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>
