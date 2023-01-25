@@ -3,6 +3,7 @@
 namespace Barranco\Contact\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
+use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -48,7 +49,7 @@ interface ContactRepositoryInterface
      *
      * @param int $id
      * @return bool
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws \Magento\Framework\Exception\CouldNotDeleteException
      */
     public function deleteById(int $id): bool;
 }
