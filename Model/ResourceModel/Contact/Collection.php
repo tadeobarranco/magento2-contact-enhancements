@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Barranco\Contact\Model\Contact\ResourceModel;
+namespace Barranco\Contact\Model\ResourceModel\Contact;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Barranco\Contact\Model\Contact;
