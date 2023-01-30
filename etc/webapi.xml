@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Berranco\Contact
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/contact" method="POST">
+        <service class="Barranco\Contact\Api\ContactRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/contact" method="PUT">
+        <service class="Barranco\Contact\Api\ContactRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/contact/:id" method="GET">
+        <service class="Barranco\Contact\Api\ContactRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/contact/search" method="GET">
+        <service class="Barranco\Contact\Api\ContactRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/contact/:id" method="DELETE">
+        <service class="Barranco\Contact\Api\ContactRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

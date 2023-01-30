@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Barranco\Contact
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Barranco\Contact\Api\ContactRepositoryInterface" type="Barranco\Contact\Model\ContactRepository"/>
+    <preference for="Barranco\Contact\Api\Data\ContactInterface" type="Barranco\Contact\Model\Contact"/>
+    <preference for="Barranco\Contact\Api\Data\ContactSearchResultsInterface" type="Barranco\Contact\Model\ContactSearchResults"/>
+</config>
