@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Barranco\Contact
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Customer::customer">
+                    <resource id="Barranco_Contact::manage" title="Contact" translate="title" sortOrder="1000">
+                        <resource id="Barranco_Contact::actions" title="Actions" translate="title" sortOrder="10">
+                            <resource id="Barranco_Contact::delete" title="Delete" translate="title" sortOrder="10" />
+                            <resource id="Barranco_Contact::save" title="Save" translate="title" sortOrder="20" />
+                            <resource id="Barranco_Contact::view" title="View" translate="title" sortOrder="30" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
