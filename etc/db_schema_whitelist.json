@@ -11,6 +11,9 @@
         },
         "constraint": {
             "PRIMARY": true
+        },
+        "index": {
+            "CONTACT_FORM_INBOX_NAME": true
         }
     }
 }

@@ -17,5 +17,8 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="id"/>
         </constraint>
+        <index referenceId="CONTACT_FORM_INBOX_NAME" indexType="fulltext">
+            <column name="name"/>
+        </index>
     </table>
 </schema>

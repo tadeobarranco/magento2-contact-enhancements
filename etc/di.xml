@@ -11,4 +11,17 @@
     <type name="Magento\Contact\Model\MailInterface">
         <plugin name="barranco_contact_save_form_data" type="Barranco\Contact\Plugin\SaveFormData" />   
     </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="contact_inbox_listing_data_source" xsi:type="string">Barranco\Contact\Model\ResourceModel\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Barranco\Contact\Model\ResourceModel\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">contact_form_inbox</argument>
+            <argument name="resourceModel" xsi:type="string">Barranco\Contact\Model\ResourceModel\Contact</argument>
+        </arguments>
+    </virtualType>
 </config>
