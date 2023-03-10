@@ -5,7 +5,9 @@
     "version": "100.0.0",
     "require": {
         "php": "~7.4.0||~8.1.0",
-        "magento/module-contact": "100.4.*"
+        "magento/module-backend": "102.0.*",
+        "magento/module-contact": "100.4.*",
+        "magento/module-ui": "101.2.*"
     },
     "license": [
         "OSL-3.0",
