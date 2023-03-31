@@ -66,5 +66,13 @@
                 <label translate="true">Received Since</label>
             </settings>
         </column>
+        <actionsColumn name="actions" class="Barranco\Contact\Ui\Component\Listing\Column\ViewAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">contact/inbox/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </actionsColumn>
     </columns>
 </listing>
