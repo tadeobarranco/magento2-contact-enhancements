@@ -8,9 +8,9 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Page;
 use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Result\PageFactory;
 
 class View extends Action implements HttpGetActionInterface
@@ -23,33 +23,40 @@ class View extends Action implements HttpGetActionInterface
 
     private RedirectFactory $redirectFactory;
 
+    private DataPersistorInterface $dataPersistor;
+
     /**
      * Class constructor
      *
      * @param Context $context
      * @param PageFactory $pageFactory
      * @param ContactRepositoryInterface $contactRepository
+     * @param RedirectFactory $redirectFactory
+     * @param DataPersistorInterface $dataPersistor
      */
     public function __construct(
         Context $context,
         PageFactory $pageFactory,
         ContactRepositoryInterface $contactRepository,
-        RedirectFactory $redirectFactory
+        RedirectFactory $redirectFactory,
+        DataPersistorInterface $dataPersistor
     ) {
         parent::__construct($context);
         $this->pageFactory = $pageFactory;
         $this->contactRepository = $contactRepository;
         $this->redirectFactory = $redirectFactory;
+        $this->dataPersistor = $dataPersistor;
     }
 
     /**
      * Inbox information page
      *
      * @return ResultInterface
-     * @throws NoSuchEntityException
      */
     public function execute(): ResultInterface
     {
+        $this->dataPersistor->clear('contact_inbox');
+
         $inbox = $this->getInbox();
 
         if (!$inbox) {
@@ -57,6 +64,8 @@ class View extends Action implements HttpGetActionInterface
             $redirect->setPath('contact/index');
             return $redirect;
         }
+
+        $this->dataPersistor->set('contact_inbox', $inbox);
 
         /** @var Page $page */
         $page = $this->pageFactory->create();
