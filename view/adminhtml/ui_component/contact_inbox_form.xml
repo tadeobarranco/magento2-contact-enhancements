@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Barranco\Contact
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">contact_inbox_form.contact_inbox_form_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <namespace>contact_inbox_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>contact_inbox_form.contact_inbox_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="contact_inbox_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider class="Barranco\Contact\Ui\DataProvider\Contact" name="contact_inbox_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <htmlContent name="contact_inbox_form_content">
+        <block name="contact_inbox_form_content_info" class="Barranco\Contact\Block\View\Info" template="Barranco_Contact::view/info.phtml">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Barranco\Contact\ViewModel\Inbox\View\GetInfoData</argument>
+            </arguments>
+        </block>
+    </htmlContent>
+</form>

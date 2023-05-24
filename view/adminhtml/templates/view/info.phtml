@@ -1,0 +1,101 @@
+<?php
+/** @var \Magento\Backend\Block\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \Barranco\Contact\ViewModel\Inbox\View\GetInfoData $viewModel */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+
+$viewModel = $block->getViewModel();
+$inbox = $viewModel->getInboxData();
+
+?>
+<?php if ($inbox): ?>
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $escaper->escapeHtml('Contact Information') ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item contact-information">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary contact-information-table">
+                    <tr>
+                        <th><?= $escaper->escapeHtml(__('Contact Date')) ?></th>
+                        <td><?= $escaper->escapeHtml($inbox->getCreatedAt()) ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="admin__page-section-item contact-account-information">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary contact-account-information-table">
+                    <tr>
+                        <th><?= $escaper->escapeHtml(__('Contact Name')) ?></th>
+                        <td><?= $escaper->escapeHtml($inbox->getName()) ?></td>
+                    </tr>
+                    <tr>
+                        <th><?= $escaper->escapeHtml(__('Email')) ?></th>
+                        <td><a href="mailto:<?= $escaper->escapeHtmlAttr($inbox->getEmail()) ?>"><?= $escaper->escapeHtml($inbox->getEmail()) ?></a></td>
+                    </tr>
+                    <tr>
+                        <th><?= $escaper->escapeHtml(__('Phone')) ?></th>
+                        <td><a href="tel:<?= $escaper->escapeHtmlAttr($inbox->getPhone()) ?>"><?= $escaper->escapeHtml($inbox->getPhone()) ?></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="admin__page-section">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $escaper->escapeHtml('Inbox Information') ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item contact-comments-history">
+            <div class="admin__page-section-item-title">
+                <span class="title"><?= $escaper->escapeHtml(__('Contact Comment')) ?></span>
+            </div>
+            <div class="admin__page-section-item-content">
+                <div class="contact-comment-text"><?= $escaper->escapeHtml($inbox->getComment()) ?></div>
+            </div>
+        </div>
+        <div class="admin__page-section-item contact-comments-form">
+            <div class="admin__page-section-item-title">
+                <span class="title"><?= $escaper->escapeHtml(__('Reply Form')) ?></span>
+            </div>
+            <div class="admin__page-section-item-content">
+                <div id="reply_contact" class="reply-contact">
+                    <div class="reply-contact-block">
+                        <div class="admin__field field-row">
+                            <div class="admin__field-control">
+                                <textarea name="reply[reply]"
+                                      class="admin__control-textarea"
+                                      rows="3"
+                                      cols="5"
+                                      id="reply-text"></textarea>
+                            </div>
+                        </div>
+                        <div class="admin__field">
+                            <div class="reply-contact-block-actions">
+                                <?= $block->getChildHtml('submit_button') ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <?php $scriptString = <<<script
+require(['prototype'], function(){
+    submitReply = function() {
+        submitAndReloadArea($('reply_contact').parentNode, '{$escaper->escapeJs($block->getSubmitUrl())}')
+    };
+    if ($('submit_reply_button')) {
+        $('submit_reply_button').observe('click', submitReply);
+    }
+});
+script;
+    ?>
+    <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
+<?php endif; ?>
+
+
