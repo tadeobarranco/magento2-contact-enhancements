@@ -21,4 +21,16 @@
             <column name="name"/>
         </index>
     </table>
+    <table name="contact_reply_inbox" resource="default" engine="innodb" comment="Contact Inbox Reply">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="int" name="parent_id" unsigned="true" nullable="false" identity="false" comment="Contact Form Inbox ID" />
+        <column xsi:type="mediumtext" name="comment" nullable="false" comment="Reply Comment" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="CONTACT_REPLY_INBOX_PARENT_ID_CONTACT_FORM_INBOX_ID"
+                    table="contact_reply_inbox" column="parent_id" referenceTable="contact_form_inbox"
+                    referenceColumn="id" onDelete="CASCADE" />
+    </table>
 </schema>

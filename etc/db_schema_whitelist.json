@@ -15,5 +15,17 @@
         "index": {
             "CONTACT_FORM_INBOX_NAME": true
         }
+    },
+    "contact_reply_inbox": {
+        "column": {
+            "id": true,
+            "parent_id": true,
+            "comment": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CONTACT_REPLY_INBOX_PARENT_ID_CONTACT_FORM_INBOX_ID": true
+        }
     }
 }
