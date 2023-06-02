@@ -2,8 +2,6 @@
 
 namespace Barranco\Contact\Api\Data;
 
-use Magento\Tests\NamingConvention\true\string;
-
 /**
  * Reply Interface
  * @api
