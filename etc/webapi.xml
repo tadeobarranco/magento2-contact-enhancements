@@ -5,6 +5,7 @@
  */
 -->
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Contact Service -->
     <route url="/V1/contact" method="POST">
         <service class="Barranco\Contact\Api\ContactRepositoryInterface" method="save"/>
         <resources>
@@ -31,6 +32,37 @@
     </route>
     <route url="/V1/contact/:id" method="DELETE">
         <service class="Barranco\Contact\Api\ContactRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <!-- Reply Contact Service -->
+    <route url="/V1/reply-contact" method="POST">
+        <service class="Barranco\Contact\Api\ReplyRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/reply-contact" method="PUT">
+        <service class="Barranco\Contact\Api\ReplyRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/reply-contact/:id" method="GET">
+        <service class="Barranco\Contact\Api\ReplyRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/reply-contact/search" method="GET">
+        <service class="Barranco\Contact\Api\ReplyRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/reply-contact/:id" method="DELETE">
+        <service class="Barranco\Contact\Api\ReplyRepositoryInterface" method="deleteById"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>
