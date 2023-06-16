@@ -45,57 +45,6 @@ $inbox = $viewModel->getInboxData();
     </div>
 </section>
 <section class="admin__page-section">
-    <div class="admin__page-section-title">
-        <span class="title"><?= $escaper->escapeHtml('Inbox Information') ?></span>
-    </div>
-    <div class="admin__page-section-content">
-        <div class="admin__page-section-item contact-comments-history">
-            <div class="admin__page-section-item-title">
-                <span class="title"><?= $escaper->escapeHtml(__('Contact Comment')) ?></span>
-            </div>
-            <div class="admin__page-section-item-content">
-                <div class="contact-comment-text"><?= $escaper->escapeHtml($inbox->getComment()) ?></div>
-            </div>
-        </div>
-        <div class="admin__page-section-item contact-comments-form">
-            <div class="admin__page-section-item-title">
-                <span class="title"><?= $escaper->escapeHtml(__('Reply Form')) ?></span>
-            </div>
-            <div class="admin__page-section-item-content">
-                <div id="reply_contact" class="reply-contact">
-                    <div class="reply-contact-block">
-                        <div class="admin__field field-row">
-                            <div class="admin__field-control">
-                                <textarea name="reply[reply]"
-                                      class="admin__control-textarea"
-                                      rows="3"
-                                      cols="5"
-                                      id="reply-text"></textarea>
-                            </div>
-                        </div>
-                        <div class="admin__field">
-                            <div class="reply-contact-block-actions">
-                                <?= $block->getChildHtml('submit_button') ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?= $block->getChildHtml('reply_contact') ?>
 </section>
-    <?php $scriptString = <<<script
-require(['prototype'], function(){
-    submitReply = function() {
-        submitAndReloadArea($('reply_contact').parentNode, '{$escaper->escapeJs($block->getSubmitUrl())}')
-    };
-    if ($('submit_reply_button')) {
-        $('submit_reply_button').observe('click', submitReply);
-    }
-});
-script;
-    ?>
-    <?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
 <?php endif; ?>
-
-
