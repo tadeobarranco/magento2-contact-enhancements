@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Barranco\Contact
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="contact_reply_email_email_template" label="Contact Reply" file="reply.html" type="html" module="Barranco_Contact" area="frontend"/>
+</config>

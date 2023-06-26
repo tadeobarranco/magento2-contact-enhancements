@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Barranco\Contact
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="contact">
+            <group id="reply_email" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Reply Email Options</label>
+                <field id="sender_email_identity" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="email_template" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

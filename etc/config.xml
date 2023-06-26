@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Barranco\Contact
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <contact>
+            <reply_email>
+                <sender_email_identity>custom2</sender_email_identity>
+                <email_template>contact_reply_email_email_template</email_template>
+            </reply_email>
+        </contact>
+    </default>
+</config>
