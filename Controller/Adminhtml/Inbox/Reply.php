@@ -12,8 +12,10 @@ use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Result\PageFactory;
+use Barranco\Contact\Api\Data\ContactInterface;
 use Barranco\Contact\Api\Data\ReplyInterface;
 use Barranco\Contact\Api\ReplyRepositoryInterface;
+use Barranco\Contact\Model\Mail;
 use Barranco\Contact\Model\ReplyFactory;
 
 class Reply extends Action implements HttpPostActionInterface
@@ -30,6 +32,8 @@ class Reply extends Action implements HttpPostActionInterface
 
     private ReplyRepositoryInterface $replyRepository;
 
+    private Mail $mail;
+
     /**
      * Class constructor
      *
@@ -40,6 +44,7 @@ class Reply extends Action implements HttpPostActionInterface
      * @param DataPersistorInterface $dataPersistor
      * @param ReplyFactory $replyFactory
      * @param ReplyRepositoryInterface $replyRepository
+     * @param Mail $mail
      */
     public function __construct(
         Context $context,
@@ -48,7 +53,8 @@ class Reply extends Action implements HttpPostActionInterface
         RawFactory $resultRawFactory,
         DataPersistorInterface $dataPersistor,
         ReplyFactory $replyFactory,
-        ReplyRepositoryInterface $replyRepository
+        ReplyRepositoryInterface $replyRepository,
+        Mail $mail
     ) {
         $this->pageFactory = $pageFactory;
         $this->resultJsonFactory = $resultJsonFactory;
@@ -56,6 +62,7 @@ class Reply extends Action implements HttpPostActionInterface
         $this->dataPersistor = $dataPersistor;
         $this->replyFactory = $replyFactory;
         $this->replyRepository = $replyRepository;
+        $this->mail = $mail;
         parent::__construct($context);
     }
 
@@ -81,6 +88,7 @@ class Reply extends Action implements HttpPostActionInterface
 
             $data['parent_id'] = $inboxId;
 
+            $this->sendEmail($inbox, $data);
             $this->saveReply($data);
 
             $resultPage = $this->pageFactory->create();
@@ -109,11 +117,21 @@ class Reply extends Action implements HttpPostActionInterface
      * @return ReplyInterface
      * @throws CouldNotSaveException
      */
-    public function saveReply(array $data): ReplyInterface
+    private function saveReply(array $data): ReplyInterface
     {
         $reply = $this->replyFactory->create();
         $reply->setData($data);
 
         return $this->replyRepository->save($reply);
+    }
+
+    /**
+     * @param ContactInterface $contactInbox
+     * @param array $data
+     * @return void
+     */
+    private function sendEmail(ContactInterface $contactInbox, array $data): void
+    {
+        $this->mail->send($contactInbox, $data);
     }
 }
