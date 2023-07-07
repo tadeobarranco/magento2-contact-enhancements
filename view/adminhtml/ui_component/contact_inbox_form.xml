@@ -32,10 +32,11 @@
         </dataProvider>
     </dataSource>
     <htmlContent name="contact_inbox_form_content">
-        <block name="contact_inbox_form_content_info" class="Barranco\Contact\Block\View\Info" template="Barranco_Contact::view/info.phtml">
+        <block name="contact_inbox_form_content_info" class="Magento\Backend\Block\Template" template="Barranco_Contact::view/info.phtml">
             <arguments>
                 <argument name="view_model" xsi:type="object">Barranco\Contact\ViewModel\Inbox\View\GetInfoData</argument>
             </arguments>
+            <block class="Barranco\Contact\Block\View\Reply" name="reply_contact" template="Barranco_Contact::view/reply.phtml"/>
         </block>
     </htmlContent>
 </form>

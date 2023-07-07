@@ -1,0 +1,65 @@
+<?php
+/** @var \Barranco\Contact\Block\View\Reply $block */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+
+$inbox = $block->getInbox();
+$replies = $block->getReplies();
+
+?>
+<?php if ($inbox): ?>
+<div class="admin__page-section-title">
+    <span class="title"><?= $escaper->escapeHtml('Inbox Information') ?></span>
+</div>
+<div id="reply_contact" class="admin__page-section-content">
+    <div class="admin__page-section-item contact-comments-history">
+        <div class="admin__page-section-item-title">
+            <span class="title"><?= $escaper->escapeHtml(__('Contact Comment')) ?></span>
+        </div>
+        <div class="admin__page-section-item-content">
+            <div class="contact-comment-text"><?= $escaper->escapeHtml($inbox->getComment()) ?></div>
+            <?php if ($replies): ?>
+                <?php foreach ($replies as $key => $comment): ?>
+                    <div class="contact-comment-text right"><?= $escaper->escapeHtml($comment) ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="admin__page-section-item contact-comments-form">
+        <div class="admin__page-section-item-title">
+            <span class="title"><?= $escaper->escapeHtml(__('Reply Form')) ?></span>
+        </div>
+        <div class="admin__page-section-item-content">
+            <div class="reply-contact">
+                <div class="reply-contact-block">
+                    <div class="admin__field field-row">
+                        <div class="admin__field-control">
+                                <textarea name="reply[comment]"
+                                          class="admin__control-textarea"
+                                          rows="3"
+                                          cols="5"
+                                          id="reply-text"></textarea>
+                        </div>
+                    </div>
+                    <div class="admin__field">
+                        <div class="reply-contact-block-actions">
+                            <?= $block->getChildHtml('submit_button') ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php $scriptString = <<<script
+require(['prototype'], function(){
+    submitReply = function() {
+        submitAndReloadArea($('reply_contact').parentNode, '{$escaper->escapeJs($block->getSubmitUrl())}')
+    };
+    if ($('submit_reply_button')) {
+        $('submit_reply_button').observe('click', submitReply);
+    }
+});
+script;
+?><?= /* @noEscape */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
+<?php endif; ?>

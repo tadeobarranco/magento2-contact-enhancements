@@ -1,0 +1,38 @@
+<!--
+/**
+ * Barranco\Contact
+ */
+-->
+<!--@subject {{trans "Contact Reply"}} @-->
+<!--@vars {
+"var name":"Name",
+"var comment": "Comment",
+"var reply": "Reply"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+<table class="message-details">
+    <tr>
+        <td>
+            <h1>{{trans "Hi %name" name=$name }}</h1>
+            <p>{{trans "Thank for the message, we are replying to you!" }}</p>
+        </td>
+    </tr>
+    <tr>
+        {{depend comment}}
+        <td>
+            <p><strong>{{trans "Message"}}</strong></p>
+            <p>{{var comment|escape|nl2br}}</p>
+        </td>
+        {{/depend}}
+        {{depend reply }}
+        <td>
+            <p><strong>{{trans "Reply"}}</strong></p>
+            <p>{{var reply|escape|nl2br}}</p>
+        </td>
+        {{/depend}}
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}
+
