@@ -27,5 +27,14 @@
             "PRIMARY": true,
             "CONTACT_REPLY_INBOX_PARENT_ID_CONTACT_FORM_INBOX_ID": true
         }
+    },
+    "contact_form_status": {
+        "column": {
+            "status": true,
+            "label": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
     }
 }

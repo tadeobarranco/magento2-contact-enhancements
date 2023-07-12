@@ -33,4 +33,11 @@
                     table="contact_reply_inbox" column="parent_id" referenceTable="contact_form_inbox"
                     referenceColumn="id" onDelete="CASCADE" />
     </table>
+    <table name="contact_form_status" resource="default" engine="innodb" comment="Contact Form Status">
+        <column xsi:type="varchar" name="status" nullable="false" length="32" comment="Status"/>
+        <column xsi:type="varchar" name="label" nullable="false" length="128" comment="Label"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="status"/>
+        </constraint>
+    </table>
 </schema>
