@@ -16,7 +16,7 @@ interface StatusSearchResultsInterface extends SearchResultsInterface
      *
      * @return StatusSearchResultsInterface[]
      */
-    public function getItems(): array;
+    public function getItems();
 
     /**
      * Set status list
@@ -24,5 +24,5 @@ interface StatusSearchResultsInterface extends SearchResultsInterface
      * @param array $items
      * @return StatusSearchResultsInterface
      */
-    public function setItems(array $items): StatusSearchResultsInterface;
+    public function setItems(array $items);
 }
