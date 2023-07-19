@@ -67,4 +67,35 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
+    <!-- Contact Status Service -->
+    <route url="/V1/contact-status" method="POST">
+        <service class="Barranco\Contact\Api\StatusRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/contact-status" method="PUT">
+        <service class="Barranco\Contact\Api\StatusRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/contact-status/:status" method="GET">
+        <service class="Barranco\Contact\Api\StatusRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/contact-status/search" method="GET">
+        <service class="Barranco\Contact\Api\StatusRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/contact-status/:status" method="DELETE">
+        <service class="Barranco\Contact\Api\StatusRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
 </routes>
