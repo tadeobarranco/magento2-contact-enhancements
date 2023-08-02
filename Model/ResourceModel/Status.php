@@ -8,8 +8,10 @@ class Status extends AbstractDb
 {
     private const STATUS_TABLE_NAME = 'contact_form_status';
 
+    protected $_isPkAutoIncrement = false;
+
     /**
-     * @inheirtdoc
+     * Initialize with table name and primary field
      */
     protected function _construct()
     {

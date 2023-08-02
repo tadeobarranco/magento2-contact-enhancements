@@ -71,7 +71,7 @@ class StatusRepository implements StatusRepositoryInterface
     {
         $statusObject = $this->statusFactory->create();
 
-        $this->statusResourceModel->load($statusObject, $status);
+        $this->statusResourceModel->load($statusObject, $status, 'status');
 
         if (!$statusObject->getStatus()) {
             throw new NoSuchEntityException(__('The status object with the "%1" status doesn\'t exist.', $status));
@@ -85,13 +85,18 @@ class StatusRepository implements StatusRepositoryInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria): StatusSearchResultsInterface
     {
+        $items = [];
         $collection = $this->collectionFactory->create();
 
         $this->collectionProcessor->process($searchCriteria, $collection);
 
+        foreach ($collection->getItems() as $item) {
+            $items[] = $item->getData();
+        }
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($searchCriteria);
-        $searchResults->setItems($collection->getItems());
+        $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
 
         return $searchResults;
@@ -99,6 +104,7 @@ class StatusRepository implements StatusRepositoryInterface
 
     /**
      * @inheridoc
+     * @throws CouldNotDeleteException|NoSuchEntityException
      */
     public function deleteById(string $status): bool
     {

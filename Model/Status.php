@@ -19,7 +19,7 @@ class Status extends AbstractModel implements StatusInterface
     /**
      * @inheirtdoc
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->getData(self::STATUS);
     }
@@ -35,7 +35,7 @@ class Status extends AbstractModel implements StatusInterface
     /**
      * @inheritdoc
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->getData(self::LABEL);
     }

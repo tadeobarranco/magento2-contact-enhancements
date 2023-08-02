@@ -14,15 +14,15 @@ interface StatusSearchResultsInterface extends SearchResultsInterface
     /**
      * Get status list
      *
-     * @return StatusSearchResultsInterface[]
+     * @return \Barranco\Contact\Api\Data\StatusSearchResultsInterface[]
      */
     public function getItems();
 
     /**
      * Set status list
      *
-     * @param array $items
-     * @return StatusSearchResultsInterface
+     * @param \Barranco\Contact\Api\Data\StatusSearchResultsInterface[] $items
+     * @return $this
      */
     public function setItems(array $items);
 }

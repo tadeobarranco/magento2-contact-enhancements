@@ -13,9 +13,9 @@ interface StatusInterface
     const LABEL = 'label';
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getStatus(): string;
+    public function getStatus(): ?string;
 
     /**
      * @param string $status
@@ -24,9 +24,9 @@ interface StatusInterface
     public function setStatus(string $status): StatusInterface;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLabel(): string;
+    public function getLabel(): ?string;
 
     /**
      * @param string $label
