@@ -2,6 +2,7 @@
 
 namespace Barranco\Contact\Controller\Adminhtml\Inbox;
 
+use Barranco\Contact\Api\ContactRepositoryInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpPostActionInterface;
@@ -17,9 +18,12 @@ use Barranco\Contact\Api\Data\ReplyInterface;
 use Barranco\Contact\Api\ReplyRepositoryInterface;
 use Barranco\Contact\Model\Mail;
 use Barranco\Contact\Model\ReplyFactory;
+use Psr\Log\LoggerInterface;
 
 class Reply extends Action implements HttpPostActionInterface
 {
+    const STATUS = 'replied';
+
     private PageFactory $pageFactory;
 
     private JsonFactory $resultJsonFactory;
@@ -34,6 +38,10 @@ class Reply extends Action implements HttpPostActionInterface
 
     private Mail $mail;
 
+    private ContactRepositoryInterface $contactRepository;
+
+    private LoggerInterface $logger;
+
     /**
      * Class constructor
      *
@@ -45,6 +53,7 @@ class Reply extends Action implements HttpPostActionInterface
      * @param ReplyFactory $replyFactory
      * @param ReplyRepositoryInterface $replyRepository
      * @param Mail $mail
+     * @param ContactRepositoryInterface $contactRepository
      */
     public function __construct(
         Context $context,
@@ -54,7 +63,9 @@ class Reply extends Action implements HttpPostActionInterface
         DataPersistorInterface $dataPersistor,
         ReplyFactory $replyFactory,
         ReplyRepositoryInterface $replyRepository,
-        Mail $mail
+        Mail $mail,
+        ContactRepositoryInterface $contactRepository,
+        LoggerInterface $logger
     ) {
         $this->pageFactory = $pageFactory;
         $this->resultJsonFactory = $resultJsonFactory;
@@ -63,6 +74,8 @@ class Reply extends Action implements HttpPostActionInterface
         $this->replyFactory = $replyFactory;
         $this->replyRepository = $replyRepository;
         $this->mail = $mail;
+        $this->contactRepository = $contactRepository;
+        $this->logger = $logger;
         parent::__construct($context);
     }
 
@@ -90,6 +103,14 @@ class Reply extends Action implements HttpPostActionInterface
 
             $this->sendEmail($inbox, $data);
             $this->saveReply($data);
+
+            $inbox->setStatus(self::STATUS);
+
+            try {
+                $this->contactRepository->save($inbox);
+            } catch (\Exception $e) {
+                $this->logger->error($e->getMessage());
+            }
 
             $resultPage = $this->pageFactory->create();
             $response = $resultPage->getLayout()->getBlock('reply_contact')->toHtml();

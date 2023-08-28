@@ -12,10 +12,12 @@ use Magento\Framework\App\Request\DataPersistorInterface;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\PageFactory;
+use Psr\Log\LoggerInterface;
 
 class View extends Action implements HttpGetActionInterface
 {
     const ADMIN_RESOURCE = 'Barranco_Contact::view';
+    const STATUS = 'viewed';
 
     private PageFactory $pageFactory;
 
@@ -25,6 +27,8 @@ class View extends Action implements HttpGetActionInterface
 
     private DataPersistorInterface $dataPersistor;
 
+    private LoggerInterface $logger;
+
     /**
      * Class constructor
      *
@@ -33,19 +37,22 @@ class View extends Action implements HttpGetActionInterface
      * @param ContactRepositoryInterface $contactRepository
      * @param RedirectFactory $redirectFactory
      * @param DataPersistorInterface $dataPersistor
+     * @param LoggerInterface $logger
      */
     public function __construct(
         Context $context,
         PageFactory $pageFactory,
         ContactRepositoryInterface $contactRepository,
         RedirectFactory $redirectFactory,
-        DataPersistorInterface $dataPersistor
+        DataPersistorInterface $dataPersistor,
+        LoggerInterface $logger
     ) {
         parent::__construct($context);
         $this->pageFactory = $pageFactory;
         $this->contactRepository = $contactRepository;
         $this->redirectFactory = $redirectFactory;
         $this->dataPersistor = $dataPersistor;
+        $this->logger = $logger;
     }
 
     /**
@@ -63,6 +70,14 @@ class View extends Action implements HttpGetActionInterface
             $redirect = $this->redirectFactory->create();
             $redirect->setPath('contact/index');
             return $redirect;
+        }
+
+        $inbox->setStatus(self::STATUS);
+
+        try {
+            $this->contactRepository->save($inbox);
+        } catch (\Exception $e) {
+            $this->logger->error($e->getMessage());
         }
 
         $this->dataPersistor->set('contact_inbox', $inbox);

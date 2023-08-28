@@ -16,6 +16,7 @@ interface ContactInterface
     const COMMENT = 'comment';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+    const STATUS = 'status';
 
     /**
      * @return int
@@ -81,4 +82,15 @@ interface ContactInterface
      * @return string
      */
     public function getUpdatedAt();
+
+    /**
+     * @return string
+     */
+    public function getStatus();
+
+    /**
+     * @param string $status
+     * @return $this
+     */
+    public function setStatus($status);
 }
