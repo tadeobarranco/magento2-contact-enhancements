@@ -60,7 +60,7 @@
                 <label translate="true">Email</label>
             </settings>
         </column>
-        <column name="status" component="Magento_Ui/js/grid/columns/select">
+        <column name="status" component="Barranco_Contact/js/grid/columns/status">
             <settings>
                 <dataType>select</dataType>
                 <filter>select</filter>

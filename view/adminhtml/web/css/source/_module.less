@@ -49,3 +49,31 @@
         text-align: right;
     }
 }
+
+.status-component {
+    border: 1px solid #303030;
+    display: block;
+    font-weight: bold;
+    line-height: 17px;
+    padding: 3px;
+    text-align: center;
+    text-transform: uppercase;
+
+    &.pending {
+        background: #fdf0d5;
+        border-color: #6f4400;
+        color: #6f4400;
+    }
+
+    &.viewed {
+        background: #e5f7fe;
+        border-color: #006bb4;
+        color: #006bb4;
+    }
+
+    &.replied {
+        background: #e5efe5;
+        border-color: #006400;
+        color: #006400;
+    }
+}
