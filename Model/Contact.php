@@ -95,4 +95,20 @@ class Contact extends AbstractModel implements ContactInterface
     {
         return $this->getData(self::UPDATED_AT);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getStatus()
+    {
+        return $this->getData(self::STATUS);
+    }
+
+    /**
+     * @inheirtdoc
+     */
+    public function setStatus($status)
+    {
+        return $this->setData(self::STATUS, $status);
+    }
 }
