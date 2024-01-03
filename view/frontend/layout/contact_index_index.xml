@@ -3,6 +3,6 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="page.main.title" remove="true"/>
-        <referenceBlock name="contactForm" template="Barranco_Contact::form.phtml"/>
+        <referenceBlock name="contactForm" template="Barranco_Contact::form-container.phtml"/>
     </body>
 </page>
