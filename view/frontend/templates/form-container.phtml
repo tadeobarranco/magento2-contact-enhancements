@@ -1,6 +1,17 @@
 <?php
 /**
  * Barranco Contact
+ *
+ * @var \Magento\Contact\Block\ContactForm $block
  */
 ?>
-<div id="contact" class="contact-container"></div>
+<div id="contact" data-bind="scope:'contact'" class="contact-container">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#contact": {
+                "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+            }
+        }
+    </script>
+</div>
