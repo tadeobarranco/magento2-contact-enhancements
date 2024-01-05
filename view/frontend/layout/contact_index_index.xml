@@ -12,6 +12,16 @@
                             <item name="config" xsi:type="array">
                                 <item name="template" xsi:type="string">Barranco_Contact/form-container</item>
                             </item>
+                            <item name="children" xsi:type="array">
+                                <item name="progressBar" xsi:type="array">
+                                    <item name="component" xsi:type="string">uiComponent</item>
+                                    <item name="displayArea" xsi:type="string">progress-bar</item>
+                                </item>
+                                <item name="steps" xsi:type="array">
+                                    <item name="component" xsi:type="string">uiComponent</item>
+                                    <item name="displayArea" xsi:type="string">steps</item>
+                                </item>
+                            </item>
                         </item>
                     </item>
                 </argument>
