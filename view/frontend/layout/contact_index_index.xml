@@ -16,10 +16,24 @@
                                 <item name="progressBar" xsi:type="array">
                                     <item name="component" xsi:type="string">Barranco_Contact/js/view/progress-bar</item>
                                     <item name="displayArea" xsi:type="string">progress-bar</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="deps" xsi:type="array">
+                                            <item name="0" xsi:type="string">contact.steps.reason-step</item>
+                                            <item name="1" xsi:type="string">contact.steps.info-step</item>
+                                        </item>
+                                    </item>
                                 </item>
                                 <item name="steps" xsi:type="array">
                                     <item name="component" xsi:type="string">uiComponent</item>
                                     <item name="displayArea" xsi:type="string">steps</item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="reason-step" xsi:type="array">
+                                            <item name="component" xsi:type="string">uiComponent</item>
+                                        </item>
+                                        <item name="info-step" xsi:type="array">
+                                            <item name="component" xsi:type="string">uiComponent</item>
+                                        </item>
+                                    </item>
                                 </item>
                             </item>
                         </item>
