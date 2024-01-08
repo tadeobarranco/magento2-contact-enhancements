@@ -3,4 +3,8 @@
  * Barranco Contact
  */
 -->
-<ul class="contact-progress-bar"></ul>
+<ul class="contact-progress-bar">
+    <!-- ko foreach: {data: steps(), as: 'item' } -->
+    <li class="contact-progress-bar-item"></li>
+    <!--/ko-->
+</ul>
