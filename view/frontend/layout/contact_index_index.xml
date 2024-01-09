@@ -28,10 +28,12 @@
                                     <item name="displayArea" xsi:type="string">steps</item>
                                     <item name="children" xsi:type="array">
                                         <item name="reason-step" xsi:type="array">
-                                            <item name="component" xsi:type="string">uiComponent</item>
+                                            <item name="component" xsi:type="string">Barranco_Contact/js/view/reason</item>
+                                            <item name="sortOrder" xsi:type="string">1</item>
                                         </item>
                                         <item name="info-step" xsi:type="array">
-                                            <item name="component" xsi:type="string">uiComponent</item>
+                                            <item name="component" xsi:type="string">Barranco_Contact/js/view/info</item>
+                                            <item name="sortOrder" xsi:type="string">2</item>
                                         </item>
                                     </item>
                                 </item>
