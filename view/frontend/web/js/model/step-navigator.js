@@ -27,6 +27,16 @@ define([
                isVisible: isVisible,
                sortOrder: sortOrder
             });
+        },
+
+        /**
+         *
+         * @param {Object} left
+         * @param {Object} right
+         * @returns {number}
+         */
+        sortItems: function (left, right) {
+            return left.sortOrder > right.sortOrder ? 1 : -1;
         }
     }
 });

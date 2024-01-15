@@ -19,6 +19,15 @@ define([
 
         initialize: function () {
             this._super();
+        },
+
+        /**
+         * @param left
+         * @param right
+         * @returns {*|Number}
+         */
+        sortItems: function (left, right) {
+            return stepNavigator.sortItems(left, right);
         }
     });
 });

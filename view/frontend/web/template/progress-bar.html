@@ -4,7 +4,9 @@
  */
 -->
 <ul class="contact-progress-bar">
-    <!-- ko foreach: {data: steps(), as: 'item' } -->
-    <li class="contact-progress-bar-item"></li>
+    <!-- ko foreach: {data: steps().sort(sortItems), as: 'item' } -->
+    <li class="contact-progress-bar-item">
+        <span data-bind="i18n: item.title"></span>
+    </li>
     <!--/ko-->
 </ul>
