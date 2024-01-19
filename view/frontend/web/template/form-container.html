@@ -6,4 +6,10 @@
 <!-- ko foreach: getRegion('progress-bar') -->
 <!-- ko template: getTemplate() --><!-- /ko -->
 <!--/ko-->
-<div class="contact-wrapper"></div>
+<div class="contact-wrapper">
+    <ol class="contact" id="contactSteps">
+    <!-- ko foreach: getRegion('steps') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <!--/ko-->
+    </ol>
+</div>

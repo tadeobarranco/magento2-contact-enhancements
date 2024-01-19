@@ -11,6 +11,9 @@ define([
     'use strict';
 
     return Component.extend({
+        defaults: {
+            template: 'Barranco_Contact/reason'
+        },
         visible: ko.observable(true),
 
         initialize: function () {

@@ -11,17 +11,20 @@ define([
     'use strict';
 
     return Component.extend({
-       visible: ko.observable(false),
+        defaults: {
+            template: 'Barranco_Contact/info'
+        },
+        visible: ko.observable(false),
 
-       initialize: function () {
-           this._super();
+        initialize: function () {
+            this._super();
 
-           stepNavigator.registerStep(
-               'info',
-               $t('Contact Info'),
-               this.visible,
-               this.sortOrder
-           )
-       }
+            stepNavigator.registerStep(
+                'info',
+                $t('Contact Info'),
+                this.visible,
+                this.sortOrder
+            )
+        }
     });
 });
