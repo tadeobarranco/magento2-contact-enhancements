@@ -6,6 +6,7 @@
 //  Variables
 //  _____________________________________________
 
+@contact-progress-bar-item__active__color: @color-blue2;
 @contact-progress-bar-item__background_color: @color-white;
 @contact-progress-bar-item__border_color: @color-gray-light01;
 @contact-progress-bar-item__color: @color-gray34;
@@ -39,6 +40,14 @@
             height: 50px;
             justify-content: center;
             width: 50px;
+        }
+
+        &._active {
+
+            span {
+                border-color: @contact-progress-bar-item__active__color;
+                color: @contact-progress-bar-item__active__color;
+            }
         }
     }
 

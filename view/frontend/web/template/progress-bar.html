@@ -5,7 +5,7 @@
 -->
 <ul class="contact-progress-bar">
     <!-- ko foreach: {data: steps().sort(sortItems), as: 'item' } -->
-    <li class="contact-progress-bar-item">
+    <li class="contact-progress-bar-item" data-bind="css: item.isVisible() ? '_active' : ''">
         <span data-bind="i18n: item.sortOrder"></span>
     </li>
     <!--/ko-->
