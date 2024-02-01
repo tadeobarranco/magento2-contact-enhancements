@@ -41,5 +41,38 @@
         .step-title {
             &:extend(.abs-contact-title all);
         }
+
+        .step-content {
+            .actions-toolbar {
+                .action {
+                    &.primary {
+                        &:extend(.abs-button-l all);
+                        margin: @indent__base 0 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .contact-wrapper {
+        .step-content {
+            .actions-toolbar {
+                > .primary {
+                    float: right;
+                }
+
+                .action {
+                    &.primary {
+                        margin: 0;
+                    }
+                }
+            }
+        }
     }
 }
