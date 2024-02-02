@@ -25,6 +25,13 @@ define([
                 this.visible,
                 this.sortOrder
             );
+        },
+
+        /**
+         * Set contact reason information
+         */
+        setReasonInformation: function () {
+            stepNavigator.next()
         }
     });
 });

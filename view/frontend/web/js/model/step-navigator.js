@@ -37,6 +37,24 @@ define([
          */
         sortItems: function (left, right) {
             return left.sortOrder > right.sortOrder ? 1 : -1;
+        },
+
+        /**
+         * Next step
+         */
+        next: function () {
+            let activeIndex;
+
+            steps().sort(this.sortItems).forEach(function (step, index) {
+                if (step.isVisible()) {
+                    step.isVisible(false);
+                    activeIndex = index;
+                }
+            });
+
+            if (steps().length > activeIndex + 1) {
+                steps()[activeIndex + 1].isVisible(true);
+            }
         }
     }
 });
