@@ -28,6 +28,14 @@ define([
          */
         sortItems: function (left, right) {
             return stepNavigator.sortItems(left, right);
+        },
+
+        /**
+         * @param {Object} step
+         * @returns {Boolean}
+         */
+        isProcessed: function (step) {
+            return stepNavigator.isProcessed(step.code);
         }
     });
 });

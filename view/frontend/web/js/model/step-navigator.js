@@ -55,6 +55,42 @@ define([
             if (steps().length > activeIndex + 1) {
                 steps()[activeIndex + 1].isVisible(true);
             }
+        },
+
+        /**
+         * @returns {Number}
+         */
+        activeIndex: function () {
+            let activeIndex = 0,
+                sortedItems = steps().sort(this.sortItems);
+
+            sortedItems.some(function (step, index) {
+                if (step.isVisible()) {
+                    activeIndex = index;
+                    return true;
+                }
+                return false;
+            });
+
+            return activeIndex;
+        },
+
+        /**
+         * @param {*} code
+         * @returns {Boolean}
+         */
+        isProcessed: function (code) {
+            let activeIndex = this.activeIndex(),
+                requestedIndex = -1,
+                sortedItems = steps().sort(this.sortItems);
+
+            sortedItems.forEach(function (step, index) {
+               if (step.code == code) {
+                    requestedIndex = index;
+               }
+            });
+
+            return activeIndex > requestedIndex;
         }
     }
 });
