@@ -8,9 +8,12 @@ define([
     'use strict';
 
     let steps = ko.observableArray();
+    let progressBarWidth = ko.observable('0%');
 
     return {
         steps: steps,
+        currentStep: ko.observable(1),
+        progressBarWidth: progressBarWidth,
 
         /**
          * Push data to the steps array
@@ -54,6 +57,8 @@ define([
 
             if (steps().length > activeIndex + 1) {
                 steps()[activeIndex + 1].isVisible(true);
+                this.currentStep(this.currentStep() + 1);
+                this.setProgressBarWidth();
             }
         },
 
@@ -91,6 +96,14 @@ define([
             });
 
             return activeIndex > requestedIndex;
+        },
+
+        /**
+         * Set progress bar width
+         */
+        setProgressBarWidth: function () {
+            let width = ((this.currentStep() - 1) / (steps().length - 1)) * 100;
+            this.progressBarWidth(width+'%');
         }
     }
 });

@@ -10,12 +10,14 @@ define([
     'use strict';
 
     let steps = stepNavigator.steps;
+    let progressBarWidth = stepNavigator.progressBarWidth;
 
     return Component.extend({
         defaults: {
             template: 'Barranco_Contact/progress-bar'
         },
         steps: steps,
+        progressBarWidth: progressBarWidth,
 
         initialize: function () {
             this._super();
