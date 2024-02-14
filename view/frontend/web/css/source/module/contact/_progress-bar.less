@@ -30,7 +30,7 @@
     .contact-progress-bar-item {
 
         span,
-        &:after {
+        span:after {
             align-items: center;
             background: @contact-progress-bar-item__background_color;
             border: 4px solid @contact-progress-bar-item__border_color;
@@ -54,14 +54,17 @@
         &._complete {
 
             span {
-                display: none;
-            }
+                position: relative;
+                visibility: hidden;
 
-            &:after {
-                border-color: @contact-progress-bar-item__active__color;
-                color: @contact-progress-bar-item__active__color;
-                content: @icon-checkmark;
-                font-family: @icons__font-name;
+                &:after {
+                    border-color: @contact-progress-bar-item__active__color;
+                    color: @contact-progress-bar-item__active__color;
+                    content: @icon-checkmark;
+                    font-family: @icons__font-name;
+                    position: absolute;
+                    visibility: visible;
+                }
             }
         }
     }
