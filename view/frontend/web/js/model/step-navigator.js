@@ -104,6 +104,28 @@ define([
         setProgressBarWidth: function () {
             let width = ((this.currentStep() - 1) / (steps().length - 1)) * 100;
             this.progressBarWidth(width+'%');
+        },
+
+        /**
+         * @param {Object} step
+         */
+        navigateTo: function (step) {
+            let self = this,
+                sortedItems = steps().sort(this.sortItems);
+
+            if (!this.isProcessed(step.code)) {
+                return;
+            }
+
+            sortedItems.forEach(function (element) {
+                if (element.code == step.code) {
+                    self.currentStep(parseInt(step.sortOrder));
+                    self.setProgressBarWidth();
+                    element.isVisible(true);
+                } else {
+                    element.isVisible(false);
+                }
+            });
         }
     }
 });

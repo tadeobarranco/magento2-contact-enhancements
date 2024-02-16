@@ -38,6 +38,13 @@ define([
          */
         isProcessed: function (step) {
             return stepNavigator.isProcessed(step.code);
+        },
+
+        /**
+         * @param {Object} step
+         */
+        navigateTo: function (step) {
+            stepNavigator.navigateTo(step);
         }
     });
 });
