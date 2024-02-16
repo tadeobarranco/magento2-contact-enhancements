@@ -1,0 +1,87 @@
+// /*
+//  * Barranco Contact
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@contact-progress-bar-item__active__color: @color-blue2;
+@contact-progress-bar-item__background_color: @color-white;
+@contact-progress-bar-item__border_color: @color-gray-light01;
+@contact-progress-bar-item__color: @color-gray34;
+@contact-progress-bar-line__background_color: @color-gray-light01;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    .contact-progress-bar {
+        &:extend(.abs-reset-list all);
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        width: 100%;
+    }
+
+    .contact-progress-bar-item {
+
+        span,
+        span:after {
+            align-items: center;
+            background: @contact-progress-bar-item__background_color;
+            border: 4px solid @contact-progress-bar-item__border_color;
+            border-radius: 50%;
+            color: @contact-progress-bar-item__color;
+            display: flex;
+            font-size: 22px;
+            height: 50px;
+            justify-content: center;
+            width: 50px;
+        }
+
+        &._active {
+
+            span {
+                border-color: @contact-progress-bar-item__active__color;
+                color: @contact-progress-bar-item__active__color;
+            }
+        }
+
+        &._complete {
+
+            span {
+                position: relative;
+                visibility: hidden;
+
+                &:after {
+                    border-color: @contact-progress-bar-item__active__color;
+                    color: @contact-progress-bar-item__active__color;
+                    content: @icon-checkmark;
+                    cursor: pointer;
+                    font-family: @icons__font-name;
+                    position: absolute;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+
+    .contact-progress-bar-line {
+        background: @contact-progress-bar-line__background_color;
+        height: 4px;
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+
+        span {
+            background: @contact-progress-bar-item__active__color;
+            display: block;
+            height: 100%;
+            transition: all 300ms ease;
+        }
+    }
+}

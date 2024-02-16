@@ -1,0 +1,78 @@
+// /*
+//  * Barranco Contact
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@contact-step-title__font-size: 26px;
+@contact-step-title__font-weight: @font-weight__light;
+@contact-step-title__padding: @indent__s;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .abs-contact-title {
+        .lib-css(padding-top, @contact-step-title__padding);
+        .lib-typography(
+        @_font-size: @contact-step-title__font-size,
+        @_font-weight: @contact-step-title__font-weight,
+        @_font-family: false,
+        @_font-style: false,
+        @_line-height: false
+        );
+    }
+
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .contact-wrapper {
+        .contact {
+            &:extend(.abs-reset-list all);
+        }
+
+        .step-title {
+            &:extend(.abs-contact-title all);
+        }
+
+        .step-content {
+            .actions-toolbar {
+                .action {
+                    &.primary {
+                        &:extend(.abs-button-l all);
+                        margin: @indent__base 0 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .contact-wrapper {
+        .step-content {
+            .actions-toolbar {
+                > .primary {
+                    float: right;
+                }
+
+                .action {
+                    &.primary {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
