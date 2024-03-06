@@ -3,9 +3,16 @@
  * Barranco Contact
  *
  * @var \Magento\Contact\Block\ContactForm $block
+ * @var \Magento\Framework\Escaper $escaper
  */
 ?>
 <div id="contact" data-bind="scope:'contact'" class="contact-container">
+    <div class="loading-mask">
+        <div class="loader">
+            <img src="<?= $escaper->escapeUrl($block->getViewFileUrl('images/loader-1.gif')) ?>"
+                 alt="<?= $escaper->escapeHtmlAttr(__('Loading...')) ?>" />
+        </div>
+    </div>
     <!-- ko template: getTemplate() --><!-- /ko -->
     <script type="text/x-magento-init">
         {
