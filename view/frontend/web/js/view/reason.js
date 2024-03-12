@@ -3,12 +3,15 @@
  */
 
 define([
+    'jquery',
     'ko',
     'uiComponent',
     'Barranco_Contact/js/model/step-navigator',
     'mage/translate'
-], function (ko, Component, stepNavigator, $t) {
+], function ($, ko, Component, stepNavigator, $t) {
     'use strict';
+
+    let containerId = '#contact';
 
     return Component.extend({
         defaults: {
@@ -31,7 +34,12 @@ define([
          * Set contact reason information
          */
         setReasonInformation: function () {
-            stepNavigator.next()
+            $(containerId).trigger('processStart');
+
+            setTimeout(function () {
+                stepNavigator.next();
+                $(containerId).trigger('processStop');
+            }, 2000);
         }
     });
 });
