@@ -40,6 +40,16 @@
                                                     <item name="displayArea" xsi:type="string">info-fieldset</item>
                                                     <item name="children" xsi:type="array">
                                                         <!-- Contact Info Form Fields -->
+                                                        <item name="name" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="customScope" xsi:type="string">contactInfoForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                            </item>
+                                                            <item name="dataScope" xsi:type="string">contactInfoForm.name</item>
+                                                            <item name="label" xsi:type="string">Name</item>
+                                                        </item>
                                                     </item>
                                                 </item>
                                             </item>

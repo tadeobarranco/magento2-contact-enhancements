@@ -3,4 +3,10 @@
  * Barranco Contact
  */
 -->
-<form class="form contact-info-form"></form>
+<form class="form contact-info-form">
+    <div class="fieldset info">
+        <!-- ko foreach: getRegion('info-fieldset') -->
+        <!-- ko template: getTemplate() --><!--/ko-->
+        <!--/ko-->
+    </div>
+</form>
