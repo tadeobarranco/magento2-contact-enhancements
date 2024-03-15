@@ -50,6 +50,36 @@
                                                             <item name="dataScope" xsi:type="string">contactInfoForm.name</item>
                                                             <item name="label" xsi:type="string">Name</item>
                                                         </item>
+                                                        <item name="email" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="customScope" xsi:type="string">contactInfoForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/email</item>
+                                                            </item>
+                                                            <item name="dataScope" xsi:type="string">contactInfoForm.email</item>
+                                                            <item name="label" xsi:type="string">Email</item>
+                                                        </item>
+                                                        <item name="telephone" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="customScope" xsi:type="string">contactInfoForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                            </item>
+                                                            <item name="dataScope" xsi:type="string">contactInfoForm.telephone</item>
+                                                            <item name="label" xsi:type="string">Phone Number</item>
+                                                        </item>
+                                                        <item name="comment" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="customScope" xsi:type="string">contactInfoForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/textarea</item>
+                                                            </item>
+                                                            <item name="dataScope" xsi:type="string">contactInfoForm.comment</item>
+                                                            <item name="label" xsi:type="string">What’s on your mind?</item>
+                                                        </item>
                                                     </item>
                                                 </item>
                                             </item>
