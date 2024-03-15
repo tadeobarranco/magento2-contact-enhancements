@@ -49,6 +49,9 @@
                                                             </item>
                                                             <item name="dataScope" xsi:type="string">contactInfoForm.name</item>
                                                             <item name="label" xsi:type="string">Name</item>
+                                                            <item name="validation" xsi:type="array">
+                                                                <item name="required-entry" xsi:type="string">true</item>
+                                                            </item>
                                                         </item>
                                                         <item name="email" xsi:type="array">
                                                             <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
@@ -59,6 +62,9 @@
                                                             </item>
                                                             <item name="dataScope" xsi:type="string">contactInfoForm.email</item>
                                                             <item name="label" xsi:type="string">Email</item>
+                                                            <item name="validation" xsi:type="array">
+                                                                <item name="required-entry" xsi:type="string">true</item>
+                                                            </item>
                                                         </item>
                                                         <item name="telephone" xsi:type="array">
                                                             <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
@@ -79,6 +85,9 @@
                                                             </item>
                                                             <item name="dataScope" xsi:type="string">contactInfoForm.comment</item>
                                                             <item name="label" xsi:type="string">What’s on your mind?</item>
+                                                            <item name="validation" xsi:type="array">
+                                                                <item name="required-entry" xsi:type="string">true</item>
+                                                            </item>
                                                         </item>
                                                     </item>
                                                 </item>
