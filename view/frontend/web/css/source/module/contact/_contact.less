@@ -6,6 +6,8 @@
 //  Variables
 //  _____________________________________________
 
+@contact-step-content__margin: 28px;
+@contact-step-title__border-color: @color-gray_light;
 @contact-step-title__font-size: 26px;
 @contact-step-title__font-weight: @font-weight__light;
 @contact-step-title__padding: @indent__s;
@@ -16,7 +18,8 @@
 
 & when (@media-common = true) {
     .abs-contact-title {
-        .lib-css(padding-top, @contact-step-title__padding);
+        border-bottom: 1px solid @contact-step-title__border-color;
+        padding: @contact-step-title__padding 0;
         .lib-typography(
         @_font-size: @contact-step-title__font-size,
         @_font-weight: @contact-step-title__font-weight,
@@ -43,6 +46,10 @@
         }
 
         .step-content {
+            .form {
+                margin: @contact-step-content__margin 0;
+            }
+
             .actions-toolbar {
                 .action {
                     &.primary {
