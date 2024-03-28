@@ -33,6 +33,7 @@
                                         </item>
                                         <item name="info-step" xsi:type="array">
                                             <item name="component" xsi:type="string">Barranco_Contact/js/view/info</item>
+                                            <item name="provider" xsi:type="string">contactProvider</item>
                                             <item name="sortOrder" xsi:type="string">2</item>
                                             <item name="children" xsi:type="array">
                                                 <item name="contact-info-fieldset" xsi:type="array">
@@ -47,10 +48,11 @@
                                                                 <item name="template" xsi:type="string">ui/form/field</item>
                                                                 <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
                                                             </item>
+                                                            <item name="provider" xsi:type="string">contactProvider</item>
                                                             <item name="dataScope" xsi:type="string">contactInfoForm.name</item>
                                                             <item name="label" xsi:type="string">Name</item>
                                                             <item name="validation" xsi:type="array">
-                                                                <item name="required-entry" xsi:type="string">true</item>
+                                                                <item name="required-entry" xsi:type="boolean">true</item>
                                                             </item>
                                                         </item>
                                                         <item name="email" xsi:type="array">
@@ -60,10 +62,12 @@
                                                                 <item name="template" xsi:type="string">ui/form/field</item>
                                                                 <item name="elementTmpl" xsi:type="string">ui/form/element/email</item>
                                                             </item>
+                                                            <item name="provider" xsi:type="string">contactProvider</item>
                                                             <item name="dataScope" xsi:type="string">contactInfoForm.email</item>
                                                             <item name="label" xsi:type="string">Email</item>
                                                             <item name="validation" xsi:type="array">
-                                                                <item name="required-entry" xsi:type="string">true</item>
+                                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                                                <item name="validate-email" xsi:type="boolean">true</item>
                                                             </item>
                                                         </item>
                                                         <item name="telephone" xsi:type="array">
@@ -73,6 +77,7 @@
                                                                 <item name="template" xsi:type="string">ui/form/field</item>
                                                                 <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
                                                             </item>
+                                                            <item name="provider" xsi:type="string">contactProvider</item>
                                                             <item name="dataScope" xsi:type="string">contactInfoForm.telephone</item>
                                                             <item name="label" xsi:type="string">Phone Number</item>
                                                         </item>
@@ -83,10 +88,11 @@
                                                                 <item name="template" xsi:type="string">ui/form/field</item>
                                                                 <item name="elementTmpl" xsi:type="string">ui/form/element/textarea</item>
                                                             </item>
+                                                            <item name="provider" xsi:type="string">contactProvider</item>
                                                             <item name="dataScope" xsi:type="string">contactInfoForm.comment</item>
                                                             <item name="label" xsi:type="string">What’s on your mind?</item>
                                                             <item name="validation" xsi:type="array">
-                                                                <item name="required-entry" xsi:type="string">true</item>
+                                                                <item name="required-entry" xsi:type="boolean">true</item>
                                                             </item>
                                                         </item>
                                                     </item>
@@ -96,6 +102,9 @@
                                     </item>
                                 </item>
                             </item>
+                        </item>
+                        <item name="contactProvider" xsi:type="array">
+                            <item name="component" xsi:type="string">uiComponent</item>
                         </item>
                     </item>
                 </argument>

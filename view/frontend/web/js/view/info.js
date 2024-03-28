@@ -4,10 +4,11 @@
 
 define([
     'ko',
-    'uiComponent',
+    'Magento_Ui/js/form/form',
     'Barranco_Contact/js/model/step-navigator',
+    'uiRegistry',
     'mage/translate'
-], function (ko, Component, stepNavigator, $t) {
+], function (ko, Component, stepNavigator, registry, $t) {
     'use strict';
 
     return Component.extend({
@@ -25,7 +26,12 @@ define([
                 $t('Contact Info'),
                 this.visible,
                 this.sortOrder
-            )
+            );
+        },
+
+        submitContactForm: function () {
+            this.source.set('params.invalid', false);
+            this.source.trigger('contactInfoForm.data.validate');
         }
     });
 });

@@ -3,10 +3,19 @@
  * Barranco Contact
  */
 -->
-<form class="form contact-info-form">
+<form class="form contact-info-form"
+      submit="submitContactForm"
+      data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
     <div class="fieldset info">
         <!-- ko foreach: getRegion('info-fieldset') -->
         <!-- ko template: getTemplate() --><!--/ko-->
         <!--/ko-->
+    </div>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button class="button action primary" type="submit">
+                <span translate="'Submit'"></span>
+            </button>
+        </div>
     </div>
 </form>
