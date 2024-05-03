@@ -4,7 +4,6 @@
  */
 -->
 <form class="form contact-info-form"
-      submit="submitContactForm"
       data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
     <div class="fieldset info">
         <!-- ko foreach: getRegion('info-fieldset') -->
@@ -13,7 +12,11 @@
     </div>
     <div class="actions-toolbar">
         <div class="primary">
-            <button class="button action primary" type="submit">
+            <button class="button action primary"
+                    type="submit"
+                    data-bind="
+                    click: submitContactForm
+                    ">
                 <span translate="'Submit'"></span>
             </button>
         </div>

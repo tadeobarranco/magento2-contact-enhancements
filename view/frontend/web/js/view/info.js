@@ -29,9 +29,34 @@ define([
             );
         },
 
-        submitContactForm: function () {
+        submitContactForm: function (data, event) {
+            let contactInfoFormData;
+
+            event.preventDefault();
+
+            if (this.validateContactInformation()) {
+                contactInfoFormData =  this.getData();
+
+                return true;
+            }
+
+            return false;
+        },
+
+        validateContactInformation: function () {
             this.source.set('params.invalid', false);
             this.source.trigger('contactInfoForm.data.validate');
+
+            if (this.source.get('params.invalid')) {
+                this.focusInvalid();
+                return false;
+            }
+
+            return true;
+        },
+
+        getData: function () {
+            return this.source.get('contactInfoForm');
         }
     });
 });
