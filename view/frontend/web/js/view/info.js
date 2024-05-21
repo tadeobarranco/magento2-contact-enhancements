@@ -4,11 +4,13 @@
 
 define([
     'ko',
+    'jquery',
     'Magento_Ui/js/form/form',
+    'Barranco_Contact/js/action/submit-contact-form',
     'Barranco_Contact/js/model/step-navigator',
     'uiRegistry',
     'mage/translate'
-], function (ko, Component, stepNavigator, registry, $t) {
+], function (ko, $, Component, submitContactFormAction, stepNavigator, registry, $t) {
     'use strict';
 
     return Component.extend({
@@ -35,7 +37,7 @@ define([
             event.preventDefault();
 
             if (this.validateContactInformation()) {
-                contactInfoFormData =  this.getData();
+                this.getSubmitContactFormDeferredObject();
 
                 return true;
             }
@@ -57,6 +59,15 @@ define([
 
         getData: function () {
             return this.source.get('contactInfoForm');
+        },
+
+        /**
+         * @return {*}
+         */
+        getSubmitContactFormDeferredObject: function () {
+            $.when(
+                submitContactFormAction(this.getData())
+            );
         }
     });
 });
