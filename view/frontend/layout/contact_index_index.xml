@@ -5,6 +5,7 @@
         <referenceBlock name="page.main.title" remove="true"/>
         <referenceBlock name="contactForm" template="Barranco_Contact::form-container.phtml">
             <arguments>
+                <argument name="view_model" xsi:type="object">Barranco\Contact\ViewModel\ContactForm</argument>
                 <argument name="jsLayout" xsi:type="array">
                     <item name="components" xsi:type="array">
                         <item name="contact" xsi:type="array">
