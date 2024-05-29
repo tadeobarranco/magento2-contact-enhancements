@@ -5,6 +5,7 @@
  * @var \Magento\Contact\Block\ContactForm $block
  * @var \Barranco\Contact\ViewModel\ContactForm $viewModel
  * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
  */
 
 $viewModel = $block->getViewModel();
@@ -24,4 +25,11 @@ $viewModel = $block->getViewModel();
             }
         }
     </script>
+    <?php
+    $serializedConfig = /* @noEscape */ $viewModel->getSerializedConfig();
+    $scriptString = <<<script
+        window.contactConfig = {$serializedConfig};
+    script;
+    ?>
+    <?= /* @noEscape  */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
 </div>
