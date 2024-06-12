@@ -12,7 +12,7 @@ define([
     return function (contactFormData) {
         let serviceUrl = urlBuilder.createUrl('/contact/us/submit-form', {}),
             payload = {
-                contactInfo: contactFormData
+                formData: contactFormData
             };
 
         return submitContactFormService(serviceUrl, payload);

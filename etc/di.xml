@@ -16,6 +16,7 @@
     <preference for="Barranco\Contact\Api\Data\StatusSearchResultsInterface" type="Barranco\Contact\Model\StatusSearchResults"/>
     <preference for="Barranco\Contact\Api\StatusRepositoryInterface" type="Barranco\Contact\Model\StatusRepository"/>
     <preference for="Barranco\Contact\Api\FormManagementInterface" type="Barranco\Contact\Model\FormManagement"/>
+    <preference for="Barranco\Contact\Api\Data\FormDataInterface" type="Barranco\Contact\Model\FormData"/>
     <type name="Magento\Contact\Model\MailInterface">
         <plugin name="barranco_contact_save_form_data" type="Barranco\Contact\Plugin\SaveFormData" />
     </type>

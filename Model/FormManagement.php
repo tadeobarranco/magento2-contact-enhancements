@@ -9,8 +9,9 @@ class FormManagement implements FormManagementInterface
     /**
      * @inheritDoc
      */
-    public function submit(): bool
-    {
+    public function submit(
+        \Barranco\Contact\Api\Data\FormDataInterface $formData
+    ): bool {
         return true;
     }
 }

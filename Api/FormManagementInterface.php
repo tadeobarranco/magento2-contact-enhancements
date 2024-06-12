@@ -12,7 +12,10 @@ interface FormManagementInterface
     /**
      * Submit contact form
      *
+     * @param \Barranco\Contact\Api\Data\FormDataInterface $formData
      * @return bool
      */
-    public function submit(): bool;
+    public function submit(
+        \Barranco\Contact\Api\Data\FormDataInterface $formData
+    ): bool;
 }
