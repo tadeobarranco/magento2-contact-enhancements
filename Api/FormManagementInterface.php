@@ -13,6 +13,7 @@ interface FormManagementInterface
      * Submit contact form
      *
      * @param \Barranco\Contact\Api\Data\FormDataInterface $formData
+     * @throws \Magento\Framework\Exception\CouldNotSaveException
      * @return bool
      */
     public function submit(
