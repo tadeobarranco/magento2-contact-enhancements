@@ -4,8 +4,9 @@
 
 define([
     'mage/storage',
-    'Barranco_Contact/js/model/full-screen-loader'
-], function (storage, fullScreenLoader) {
+    'Barranco_Contact/js/model/full-screen-loader',
+    'Barranco_Contact/js/model/error-processor'
+], function (storage, fullScreenLoader, errorProcessor) {
     'use strict';
 
     return function (serviceUrl, payload) {
@@ -16,7 +17,9 @@ define([
         ).done(
             // TODO: reset values
         ).fail(
-            // TODO: set error message
+            function (response) {
+                errorProcessor.process(response);
+            }
         ).always(
             function () {
                 fullScreenLoader.stopLoader();
