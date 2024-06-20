@@ -24,6 +24,10 @@
                                         </item>
                                     </item>
                                 </item>
+                                <item name="messageErrors" xsi:type="array">
+                                    <item name="component" xsi:type="string">Magento_Ui/js/view/messages</item>
+                                    <item name="displayArea" xsi:type="string">message-errors</item>
+                                </item>
                                 <item name="steps" xsi:type="array">
                                     <item name="component" xsi:type="string">uiComponent</item>
                                     <item name="displayArea" xsi:type="string">steps</item>
