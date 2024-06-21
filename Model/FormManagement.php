@@ -3,6 +3,8 @@
 namespace Barranco\Contact\Model;
 
 use Barranco\Contact\Api\FormManagementInterface;
+use Magento\Contact\Model\MailInterface;
+use Magento\Framework\DataObject;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\LocalizedException;
 use Psr\Log\LoggerInterface;
@@ -11,15 +13,20 @@ class FormManagement implements FormManagementInterface
 {
     private LoggerInterface $logger;
 
+    private MailInterface $mail;
+
     /**
      * Class constructor
      *
      * @param LoggerInterface $logger
+     * @param MailInterface $mail
      */
     public function __construct(
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        MailInterface $mail
     ) {
         $this->logger = $logger;
+        $this->mail = $mail;
     }
 
     /**
@@ -30,7 +37,7 @@ class FormManagement implements FormManagementInterface
     ): bool {
         $data = $formData->getData();
         try {
-            $this->validateFormData($data);
+            $this->sendEmail($this->validateFormData($data));
         } catch (LocalizedException $e) {
             $this->logger->critical($e->getMessage());
             throw new CouldNotSaveException(
@@ -64,5 +71,19 @@ class FormManagement implements FormManagementInterface
         }
 
         return $data;
+    }
+
+    /**
+     * Method to send email as the Magento core
+     *
+     * @param array $data
+     * @return void
+     */
+    private function sendEmail(array $data): void
+    {
+        $this->mail->send(
+            $data['email'],
+            ['data' => new DataObject($data)]
+        );
     }
 }
