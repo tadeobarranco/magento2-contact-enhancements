@@ -6,11 +6,21 @@ define([
     'ko',
     'jquery',
     'Magento_Ui/js/form/form',
+    'Barranco_Contact/js/action/redirect-on-success',
     'Barranco_Contact/js/action/submit-contact-form',
     'Barranco_Contact/js/model/step-navigator',
     'uiRegistry',
     'mage/translate'
-], function (ko, $, Component, submitContactFormAction, stepNavigator, registry, $t) {
+], function (
+    ko,
+    $,
+    Component,
+    redirectOnSuccessAction,
+    submitContactFormAction,
+    stepNavigator,
+    registry,
+    $t
+) {
     'use strict';
 
     return Component.extend({
@@ -32,12 +42,15 @@ define([
         },
 
         submitContactForm: function (data, event) {
-            let contactInfoFormData;
-
             event.preventDefault();
 
             if (this.validateContactInformation()) {
-                this.getSubmitContactFormDeferredObject();
+                this.getSubmitContactFormDeferredObject()
+                    .done(
+                        function () {
+                            redirectOnSuccessAction.execute();
+                        }
+                    );
 
                 return true;
             }
@@ -65,7 +78,7 @@ define([
          * @return {*}
          */
         getSubmitContactFormDeferredObject: function () {
-            $.when(
+            return $.when(
                 submitContactFormAction(this.getData())
             );
         }
