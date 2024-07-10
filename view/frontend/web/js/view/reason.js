@@ -6,9 +6,11 @@ define([
     'jquery',
     'ko',
     'uiComponent',
+    'Magento_Customer/js/customer-data',
+    'Magento_Ui/js/model/messageList',
     'Barranco_Contact/js/model/step-navigator',
     'mage/translate'
-], function ($, ko, Component, stepNavigator, $t) {
+], function ($, ko, Component, customerData, messageList, stepNavigator, $t) {
     'use strict';
 
     let containerId = '#contact';
@@ -28,6 +30,16 @@ define([
                 this.visible,
                 this.sortOrder
             );
+
+            let successMessageData = customerData.get('success-message');
+
+            if (successMessageData && successMessageData().message) {
+                messageList.addSuccessMessage({
+                    message: successMessageData().message
+                });
+
+                customerData.set('success-message', {});
+            }
         },
 
         /**
