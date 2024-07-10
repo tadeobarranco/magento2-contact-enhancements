@@ -98,4 +98,11 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
+    <!-- Contact Form Service -->
+    <route url="/V1/contact/us/submit-form" method="POST">
+        <service class="Barranco\Contact\Api\FormManagementInterface" method="submit"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
 </routes>

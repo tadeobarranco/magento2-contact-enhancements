@@ -3,8 +3,12 @@
  * Barranco Contact
  *
  * @var \Magento\Contact\Block\ContactForm $block
+ * @var \Barranco\Contact\ViewModel\ContactForm $viewModel
  * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
  */
+
+$viewModel = $block->getViewModel();
 ?>
 <div id="contact" data-bind="scope:'contact'" class="contact-container">
     <div class="loading-mask" data-mage-init='{"contactLoader": {}}'>
@@ -21,4 +25,11 @@
             }
         }
     </script>
+    <?php
+    $serializedConfig = /* @noEscape */ $viewModel->getSerializedConfig();
+    $scriptString = <<<script
+        window.contactConfig = {$serializedConfig};
+    script;
+    ?>
+    <?= /* @noEscape  */ $secureRenderer->renderTag('script', [], $scriptString, false) ?>
 </div>

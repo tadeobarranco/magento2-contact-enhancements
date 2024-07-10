@@ -5,6 +5,7 @@
         <referenceBlock name="page.main.title" remove="true"/>
         <referenceBlock name="contactForm" template="Barranco_Contact::form-container.phtml">
             <arguments>
+                <argument name="view_model" xsi:type="object">Barranco\Contact\ViewModel\ContactForm</argument>
                 <argument name="jsLayout" xsi:type="array">
                     <item name="components" xsi:type="array">
                         <item name="contact" xsi:type="array">
@@ -23,6 +24,10 @@
                                         </item>
                                     </item>
                                 </item>
+                                <item name="messages" xsi:type="array">
+                                    <item name="component" xsi:type="string">Magento_Ui/js/view/messages</item>
+                                    <item name="displayArea" xsi:type="string">messages</item>
+                                </item>
                                 <item name="steps" xsi:type="array">
                                     <item name="component" xsi:type="string">uiComponent</item>
                                     <item name="displayArea" xsi:type="string">steps</item>
@@ -33,11 +38,78 @@
                                         </item>
                                         <item name="info-step" xsi:type="array">
                                             <item name="component" xsi:type="string">Barranco_Contact/js/view/info</item>
+                                            <item name="provider" xsi:type="string">contactProvider</item>
                                             <item name="sortOrder" xsi:type="string">2</item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="contact-info-fieldset" xsi:type="array">
+                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                    <item name="displayArea" xsi:type="string">info-fieldset</item>
+                                                    <item name="children" xsi:type="array">
+                                                        <!-- Contact Info Form Fields -->
+                                                        <item name="name" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="customScope" xsi:type="string">contactInfoForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                            </item>
+                                                            <item name="provider" xsi:type="string">contactProvider</item>
+                                                            <item name="dataScope" xsi:type="string">contactInfoForm.name</item>
+                                                            <item name="label" xsi:type="string">Name</item>
+                                                            <item name="validation" xsi:type="array">
+                                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                                            </item>
+                                                        </item>
+                                                        <item name="email" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="customScope" xsi:type="string">contactInfoForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/email</item>
+                                                            </item>
+                                                            <item name="provider" xsi:type="string">contactProvider</item>
+                                                            <item name="dataScope" xsi:type="string">contactInfoForm.email</item>
+                                                            <item name="label" xsi:type="string">Email</item>
+                                                            <item name="validation" xsi:type="array">
+                                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                                                <item name="validate-email" xsi:type="boolean">true</item>
+                                                            </item>
+                                                        </item>
+                                                        <item name="telephone" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="customScope" xsi:type="string">contactInfoForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/input</item>
+                                                            </item>
+                                                            <item name="provider" xsi:type="string">contactProvider</item>
+                                                            <item name="dataScope" xsi:type="string">contactInfoForm.telephone</item>
+                                                            <item name="label" xsi:type="string">Phone Number</item>
+                                                        </item>
+                                                        <item name="comment" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/textarea</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="customScope" xsi:type="string">contactInfoForm</item>
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/textarea</item>
+                                                            </item>
+                                                            <item name="provider" xsi:type="string">contactProvider</item>
+                                                            <item name="dataScope" xsi:type="string">contactInfoForm.comment</item>
+                                                            <item name="label" xsi:type="string">What’s on your mind?</item>
+                                                            <item name="validation" xsi:type="array">
+                                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
                                         </item>
                                     </item>
                                 </item>
                             </item>
+                        </item>
+                        <item name="contactProvider" xsi:type="array">
+                            <item name="component" xsi:type="string">uiComponent</item>
                         </item>
                     </item>
                 </argument>
