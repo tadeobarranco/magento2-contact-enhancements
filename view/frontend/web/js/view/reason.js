@@ -17,7 +17,8 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Barranco_Contact/reason'
+            template: 'Barranco_Contact/reason',
+            formTemplate: 'Barranco_Contact/form/reason'
         },
         visible: ko.observable(true),
 
