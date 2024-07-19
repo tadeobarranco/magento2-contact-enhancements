@@ -41,6 +41,29 @@
                                                     <item name="displayArea" xsi:type="string">reason-fieldset</item>
                                                     <item name="children" xsi:type="array">
                                                         <!-- Contact Reason Form Fields -->
+                                                        <item name="category" xsi:type="array">
+                                                            <item name="component" xsi:type="string">Magento_Ui/js/form/element/select</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                                                <item name="elementTmpl" xsi:type="string">ui/form/element/select</item>
+                                                                <item name="caption" xsi:type="string">-- Please Select --</item>
+                                                                <item name="options" xsi:type="array">
+                                                                    <item name="0" xsi:type="array">
+                                                                        <item name="value" xsi:type="string">orders</item>
+                                                                        <item name="label" xsi:type="string">Orders</item>
+                                                                    </item>
+                                                                    <item name="1" xsi:type="array">
+                                                                        <item name="value" xsi:type="string">promotions</item>
+                                                                        <item name="label" xsi:type="string">Promotions</item>
+                                                                    </item>
+                                                                    <item name="2" xsi:type="array">
+                                                                        <item name="value" xsi:type="string">products</item>
+                                                                        <item name="label" xsi:type="string">Products</item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                            <item name="label" xsi:type="string">Category</item>
+                                                        </item>
                                                     </item>
                                                 </item>
                                             </item>
