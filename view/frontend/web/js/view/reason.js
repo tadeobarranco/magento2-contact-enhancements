@@ -21,6 +21,7 @@ define([
             formTemplate: 'Barranco_Contact/form/reason'
         },
         visible: ko.observable(true),
+        reason: ko.observable(false),
 
         initialize: function () {
             this._super();

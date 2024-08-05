@@ -8,7 +8,13 @@
     <div class="step-content">
         <form class="form contact-reason-form" submit="setReasonInformation">
             <render args="formTemplate"></render>
-            <div class="actions-toolbar">
+            <div class="contact-reason-block">
+                <div class="no-reason-block"
+                     ifnot="reason()"
+                     translate="'Sorry, but you must select a category reason first.'"></div>
+            </div>
+            <div class="actions-toolbar"
+                 if="reason()">
                 <div class="primary">
                     <button class="button action primary">
                         <span translate="'Next'"></span>
