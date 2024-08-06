@@ -22,8 +22,10 @@ define([
         },
         visible: ko.observable(true),
         reason: ko.observable(false),
+        isLoading: ko.observable(true),
 
         initialize: function () {
+            self = this;
             this._super();
 
             stepNavigator.registerStep(
@@ -42,6 +44,10 @@ define([
 
                 customerData.set('success-message', {});
             }
+
+            setTimeout(function () {
+                self.isLoading(false);
+            }, 2000);
         },
 
         /**
