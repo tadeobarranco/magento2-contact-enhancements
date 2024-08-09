@@ -6,11 +6,12 @@ define([
     'jquery',
     'ko',
     'uiComponent',
+    'uiRegistry',
     'Magento_Customer/js/customer-data',
     'Magento_Ui/js/model/messageList',
     'Barranco_Contact/js/model/step-navigator',
     'mage/translate'
-], function ($, ko, Component, customerData, messageList, stepNavigator, $t) {
+], function ($, ko, Component, registry, customerData, messageList, stepNavigator, $t) {
     'use strict';
 
     let containerId = '#contact';
@@ -48,6 +49,14 @@ define([
             setTimeout(function () {
                 self.isLoading(false);
             }, 2000);
+
+            /**
+             * @todo Init reason form validator
+             * @todo Observe on reason form changes
+             */
+            registry.async('contactProvider')(function (contactProvider) {
+
+            })
         },
 
         /**
