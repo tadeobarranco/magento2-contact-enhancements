@@ -9,6 +9,7 @@ define([
     'uiRegistry',
     'Magento_Customer/js/customer-data',
     'Magento_Ui/js/model/messageList',
+    'Barranco_Contact/js/model/reason-service',
     'Barranco_Contact/js/model/reason-validator',
     'Barranco_Contact/js/model/step-navigator',
     'mage/translate'
@@ -19,6 +20,7 @@ define([
     registry,
     customerData,
     messageList,
+    reasonService,
     reasonValidator,
     stepNavigator,
     $t
@@ -33,8 +35,8 @@ define([
             formTemplate: 'Barranco_Contact/form/reason'
         },
         visible: ko.observable(true),
-        reason: ko.observable(false),
-        isLoading: ko.observable(true),
+        reason: reasonService.reason,
+        isLoading: reasonService.isLoading,
 
         initialize: function () {
             let self = this,
@@ -58,8 +60,10 @@ define([
                 customerData.set('success-message', {});
             }
 
+            reasonService.isLoading(true);
+
             setTimeout(function () {
-                self.isLoading(false);
+                reasonService.isLoading(false);
             }, 2000);
 
             /**
