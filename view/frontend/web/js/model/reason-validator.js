@@ -3,10 +3,11 @@
  */
 
 define([
-   'jquery',
-   'ko',
-   'uiRegistry'
-], function ($, ko, registry) {
+    'jquery',
+    'ko',
+    'uiRegistry',
+    'Barranco_Contact/js/model/reason-service'
+], function ($, ko, registry, reasonService) {
     'use strict';
 
     return {
@@ -43,7 +44,12 @@ define([
          */
         bindHandler: function (field) {
             field.on('value', function () {
-                /** @todo Select Contact Reason Category Action */
+                reasonService.isLoading(true);
+                reasonService.reason(field.value());
+
+                setTimeout(function () {
+                    reasonService.isLoading(false);
+                }, 2000);
             });
         },
 
