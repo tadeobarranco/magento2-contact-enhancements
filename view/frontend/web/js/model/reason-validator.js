@@ -6,9 +6,8 @@ define([
     'jquery',
     'ko',
     'uiRegistry',
-    'Barranco_Contact/js/action/select-reason',
-    'Barranco_Contact/js/model/reason-service'
-], function ($, ko, registry, selectReason, reasonService) {
+    'Barranco_Contact/js/action/select-reason'
+], function ($, ko, registry, selectReason) {
     'use strict';
 
     return {
@@ -45,13 +44,7 @@ define([
          */
         bindHandler: function (field) {
             field.on('value', function () {
-                reasonService.isLoading(true);
                 selectReason(field.value());
-                reasonService.reason(field.value());
-
-                setTimeout(function () {
-                    reasonService.isLoading(false);
-                }, 2000);
             });
         },
 

@@ -12,7 +12,8 @@ define([
     'Barranco_Contact/js/model/reason-service',
     'Barranco_Contact/js/model/reason-validator',
     'Barranco_Contact/js/model/step-navigator',
-    'mage/translate'
+    'mage/translate',
+    'Barranco_Contact/js/model/reason-category-service'
 ], function (
     $,
     ko,
