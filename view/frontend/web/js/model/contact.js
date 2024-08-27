@@ -10,7 +10,7 @@ define([
 
     let reason = ko.observable(null);
 
-    return{
+    return {
         reason: reason
     }
 })
