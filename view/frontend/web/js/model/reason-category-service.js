@@ -4,21 +4,17 @@
 
 define([
     'Barranco_Contact/js/model/contact',
-    'Barranco_Contact/js/model/reason-service'
-], function (contact, reasonService) {
+    'Barranco_Contact/js/model/reason-category-service/default'
+], function (contact, defaultProcessor) {
     'use strict';
+
+    let processors = {};
+
+    processors.default = defaultProcessor;
 
     contact.reason.subscribe(function () {
         let category = contact.reason();
 
-        reasonService.isLoading(true);
-
-        if (category !== undefined) {
-            reasonService.reason(category);
-        }
-
-        setTimeout(function () {
-            reasonService.isLoading(false);
-        }, 2000);
+        processors.default.getReason(category);
     });
 });
