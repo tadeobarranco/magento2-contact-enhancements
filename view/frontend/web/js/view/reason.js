@@ -33,7 +33,8 @@ define([
     return Component.extend({
         defaults: {
             template: 'Barranco_Contact/reason',
-            formTemplate: 'Barranco_Contact/form/reason'
+            formTemplate: 'Barranco_Contact/form/reason',
+            searchReasonTemplate: 'Barranco_Contact/form/search'
         },
         visible: ko.observable(true),
         reason: reasonService.reason,
