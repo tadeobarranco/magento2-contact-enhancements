@@ -5,11 +5,22 @@
 -->
 <div class="fieldset search">
     <div class="field">
-        <label class="label" for="search">
+        <label class="label" for="search_reason" data-role="contact-reason-form-label">
             <span translate="'Search'"></span>
         </label>
         <div class="control">
-            <input id="search" type="text" name="search" />
+            <input id="search_reason"
+                   data-bind='mageInit: {"quickSearch": {
+                        "formSelector": "#reason_form",
+                        "minSearchLength": 1,
+                        "url": "/contact/search/reason",
+                        "destinationSelector": "#reason_results"
+                   }}'
+                   type="text"
+                   name="q"
+                   placeholder="Search here..."
+                   class="input-text" />
+            <div id="reason_results" class="search-autocomplete"></div>
         </div>
     </div>
 </div>

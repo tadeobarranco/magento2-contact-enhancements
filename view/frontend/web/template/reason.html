@@ -6,7 +6,7 @@
 <li id="reason" class="contact-reason-step" data-bind="fadeVisible: visible()">
     <div class="step-title" translate="'Contact Reason'" data-role="title"></div>
     <div class="step-content">
-        <form class="form contact-reason-form" submit="setReasonInformation">
+        <form id="reason_form" class="form contact-reason-form" submit="setReasonInformation">
             <render args="formTemplate"></render>
             <div class="contact-reason-block"
                  data-bind="blockLoader: isLoading">
@@ -15,7 +15,7 @@
                     <render args="searchReasonTemplate"></render>
                     <div class="actions-toolbar">
                         <div class="primary">
-                            <button class="button action primary">
+                            <button type="submit" class="button action primary">
                                 <span translate="'Next'"></span>
                             </button>
                         </div>
