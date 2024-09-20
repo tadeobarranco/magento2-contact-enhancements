@@ -15,9 +15,10 @@
                         "minSearchLength": 1,
                         "url": "/contact/search/reason",
                         "destinationSelector": "#reason_results"
-                   }}'
+                   }}, attr: {
+                        name: reason()
+                   }'
                    type="text"
-                   name="q"
                    placeholder="Search here..."
                    class="input-text" />
             <div id="reason_results" class="search-autocomplete"></div>
