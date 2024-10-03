@@ -4,14 +4,14 @@
 
 define([
     'jquery',
-    'mage/template'
-], function ($, mageTemplate) {
+    'mage/template',
+    'Barranco_Contact/js/model/error-processor'
+], function ($, mageTemplate, errorProcessor) {
     'use strict';
 
     $.widget('contact.search', $.mage.quickSearch, {
         _onPropertyChange: function () {
-            let self = this,
-                searchField = this.element,
+            let searchField = this.element,
                 clonePosition = {
                     position: 'absolute',
                     // Removed to fix display issues
@@ -80,6 +80,15 @@ define([
                                     }
                                 }.bind(this));
                         } else {
+                            if (data.error) {
+                                let responseText = JSON.stringify({"message": data.message});
+
+                                this.submitBtn.disabled = true;
+
+                                errorProcessor.process({
+                                    responseText: responseText
+                                });
+                            }
                             this._resetResponseList(true);
                             this.autoComplete.hide();
                             this._updateAriaHasPopup(false);
