@@ -2,7 +2,9 @@
 
 namespace Barranco\Contact\Controller\Search;
 
+use Barranco\Contact\Api\AutocompleteInterface;
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
@@ -14,6 +16,22 @@ class Reason extends Action implements HttpGetActionInterface
         'promotions',
         'products'
     ];
+
+    private AutocompleteInterface $autocomplete;
+
+    /**
+     * Class constructor
+     *
+     * @param Context $context
+     * @param AutocompleteInterface $autocomplete
+     */
+    public function __construct(
+        Context $context,
+        AutocompleteInterface $autocomplete
+    ) {
+        $this->autocomplete = $autocomplete;
+        parent::__construct($context);
+    }
 
     /**
      * @return ResultInterface
@@ -38,6 +56,8 @@ class Reason extends Action implements HttpGetActionInterface
                 'message' => __('Missing or empty query param.')
             ];
         }
+
+        $autocompleteData = $this->autocomplete->getItems();
 
         $resultJson->setData($responseData);
 

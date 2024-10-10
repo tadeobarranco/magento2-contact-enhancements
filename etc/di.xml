@@ -19,6 +19,7 @@
     <preference for="Barranco\Contact\Api\Data\ReasonDetailsInterface" type="Barranco\Contact\Model\ReasonDetails"/>
     <preference for="Barranco\Contact\Api\FormManagementInterface" type="Barranco\Contact\Model\FormManagement"/>
     <preference for="Barranco\Contact\Api\Data\FormDataInterface" type="Barranco\Contact\Model\FormData"/>
+    <preference for="Barranco\Contact\Api\AutocompleteInterface" type="Barranco\Contact\Model\Autocomplete"/>
     <type name="Magento\Contact\Model\MailInterface">
         <plugin name="barranco_contact_save_form_data" type="Barranco\Contact\Plugin\SaveFormData" />
     </type>
