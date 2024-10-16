@@ -36,4 +36,13 @@
             <argument name="resourceModel" xsi:type="string">Barranco\Contact\Model\ResourceModel\Contact</argument>
         </arguments>
     </virtualType>
+    <type name="Barranco\Contact\Model\Autocomplete">
+        <arguments>
+            <argument name="dataProviders" xsi:type="array">
+                <item name="orders" xsi:type="object">Barranco\Contact\Model\DataProvider\Orders</item>
+                <item name="promotions" xsi:type="object">Barranco\Contact\Model\DataProvider\Promotions</item>
+                <item name="products" xsi:type="object">Barranco\Contact\Model\DataProvider\Products</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
