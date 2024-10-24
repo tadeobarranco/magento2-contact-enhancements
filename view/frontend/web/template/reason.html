@@ -10,17 +10,20 @@
             <render args="formTemplate"></render>
             <div class="contact-reason-block"
                  data-bind="blockLoader: isLoading">
+                <div class="reason-block"
+                     if="reason()">
+                    <render args="formFieldsTemplate"></render>
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <button class="button action primary">
+                                <span translate="'Next'"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <div class="no-reason-block"
                      ifnot="reason()"
                      translate="'Sorry, but you must select a category reason first.'"></div>
-            </div>
-            <div class="actions-toolbar"
-                 if="reason()">
-                <div class="primary">
-                    <button class="button action primary">
-                        <span translate="'Next'"></span>
-                    </button>
-                </div>
             </div>
         </form>
     </div>
