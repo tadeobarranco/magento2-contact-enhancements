@@ -63,6 +63,9 @@
                                                                 </item>
                                                             </item>
                                                             <item name="label" xsi:type="string">Category</item>
+                                                            <item name="validation" xsi:type="array">
+                                                                <item name="required-entry" xsi:type="boolean">true</item>
+                                                            </item>
                                                         </item>
                                                     </item>
                                                 </item>
