@@ -65,6 +65,7 @@ class LayoutProcessor implements LayoutProcessorInterface
                 'customScope' => 'contactReasonForm',
                 'template' => 'ui/form/field',
                 'elementTmpl' => 'ui/form/element/input',
+                'visible' => false
             ],
             'provider' => 'contactProvider',
             'validation' => [

@@ -55,6 +55,18 @@ define([
             return [
               'category'
             ];
+        },
+
+        updateFields: function (reason, fieldsPath) {
+            let reasonFormFields = registry.get(fieldsPath);
+
+            if (reasonFormFields && reasonFormFields.elems) {
+                let fields = reasonFormFields.elems();
+
+                $.each(fields, function (index, field) {
+                    field.visible(true);
+                });
+            }
         }
     }
 });

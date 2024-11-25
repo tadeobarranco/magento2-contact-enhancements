@@ -9,6 +9,7 @@ define([
     'uiRegistry',
     'Magento_Customer/js/customer-data',
     'Magento_Ui/js/model/messageList',
+    'Barranco_Contact/js/model/contact',
     'Barranco_Contact/js/model/reason-service',
     'Barranco_Contact/js/model/reason-validator',
     'Barranco_Contact/js/model/step-navigator',
@@ -21,6 +22,7 @@ define([
     registry,
     customerData,
     messageList,
+    contact,
     reasonService,
     reasonValidator,
     stepNavigator,
@@ -42,7 +44,8 @@ define([
 
         initialize: function () {
             let self = this,
-                formPath = 'contact.steps.reason-step.contact-reason-fieldset';
+                formPath = 'contact.steps.reason-step.contact-reason-fieldset',
+                fieldsPath = 'contact.steps.reason-step.reason-form-fields';
             this._super();
 
             stepNavigator.registerStep(
@@ -62,11 +65,9 @@ define([
                 customerData.set('success-message', {});
             }
 
-            reasonService.isLoading(true);
-
-            setTimeout(function () {
-                reasonService.isLoading(false);
-            }, 2000);
+            contact.reason.subscribe(function (reason) {
+                reasonValidator.updateFields(reason, fieldsPath);
+            });
 
             /**
              * @todo Observe on reason form changes
