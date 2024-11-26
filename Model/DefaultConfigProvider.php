@@ -16,6 +16,7 @@ class DefaultConfigProvider implements ConfigProviderInterface
      * Class constructor
      *
      * @param StoreManagerInterface $storeManager
+     * @param UrlInterface $urlBuilder
      */
     public function __construct(
         StoreManagerInterface $storeManager,
@@ -33,6 +34,7 @@ class DefaultConfigProvider implements ConfigProviderInterface
         $config = [];
         $config['storeCode'] = $this->getStoreCode();
         $config['defaultSuccessPageUrl'] = $this->getDefaultSuccessPageUrl();
+        $config['fieldsByReason'] = $this->getFieldsByReason();
 
         return $config;
     }
@@ -56,5 +58,19 @@ class DefaultConfigProvider implements ConfigProviderInterface
     private function getDefaultSuccessPageUrl(): string
     {
         return $this->urlBuilder->getUrl('contact');
+    }
+
+    /**
+     * Get the list of fields available per reason
+     *
+     * @return array[]
+     */
+    private function getFieldsByReason(): array
+    {
+        return [
+            'orders' => ['order_id'],
+            'promotions' => ['promotion_code'],
+            'products' => ['product_sku']
+        ];
     }
 }

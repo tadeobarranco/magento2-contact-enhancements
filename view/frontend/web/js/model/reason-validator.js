@@ -10,6 +10,8 @@ define([
 ], function ($, ko, registry, selectReason) {
     'use strict';
 
+    let fieldsByReason = window.contactConfig.fieldsByReason;
+
     return {
 
         /**
@@ -57,14 +59,21 @@ define([
             ];
         },
 
+        /**
+         * Update form reason fields
+         *
+         * @param {String} reason
+         * @param {String} fieldsPath
+         */
         updateFields: function (reason, fieldsPath) {
-            let reasonFormFields = registry.get(fieldsPath);
+            let reasonFormFields = registry.get(fieldsPath),
+                reasonFields = fieldsByReason[reason];
 
             if (reasonFormFields && reasonFormFields.elems) {
                 let fields = reasonFormFields.elems();
 
                 $.each(fields, function (index, field) {
-                    field.visible(true);
+                    field.visible(reasonFields.includes(field.index));
                 });
             }
         }
