@@ -83,6 +83,10 @@ class LayoutProcessor implements LayoutProcessorInterface
     {
         return [
             'order_id' => __('Order ID'),
+            'order_status' => __('Order Status'),
+            'issue_type' => __('Issue Type'),
+            'shipping_carrier' => __('Shipping Carrier'),
+            'tracking_number' => __('Tracking Number')
         ];
     }
 
@@ -95,6 +99,12 @@ class LayoutProcessor implements LayoutProcessorInterface
     {
         return [
             'promotion_code' => __('Promotion Code'),
+            'issue_type' => __('Issue Type'),
+            'expected_discount' => __('Expected Discount'),
+            'applied_discount' => __('Applied Discount'),
+            'promotion_start_date' => __('Promotion Start Date'),
+            'promotion_end_date' => __('Promotion End Date'),
+            'cart_total' => __('Cart Total')
         ];
     }
 
@@ -107,6 +117,8 @@ class LayoutProcessor implements LayoutProcessorInterface
     {
         return [
             'product_sku' => __('Product SKU'),
+            'issue_type' => __('Issue Type'),
+            'product_condition' => __('Product Condition')
         ];
     }
 }

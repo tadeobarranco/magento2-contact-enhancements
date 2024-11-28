@@ -68,9 +68,27 @@ class DefaultConfigProvider implements ConfigProviderInterface
     private function getFieldsByReason(): array
     {
         return [
-            'orders' => ['order_id'],
-            'promotions' => ['promotion_code'],
-            'products' => ['product_sku']
+            'orders' => [
+                'order_id',
+                'order_status',
+                'issue_type',
+                'shipping_carrier',
+                'tracking_number',
+            ],
+            'promotions' => [
+                'promotion_code',
+                'issue_type',
+                'expected_discount',
+                'applied_discount',
+                'promotion_start_date',
+                'promotion_end_date',
+                'cart_total'
+            ],
+            'products' => [
+                'product_sku',
+                'issue_type',
+                'product_condition'
+            ]
         ];
     }
 }
