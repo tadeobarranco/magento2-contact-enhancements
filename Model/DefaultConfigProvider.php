@@ -71,13 +71,13 @@ class DefaultConfigProvider implements ConfigProviderInterface
             'orders' => [
                 'order_id',
                 'order_status',
-                'issue_type',
+                'order_issue_type',
                 'shipping_carrier',
                 'tracking_number',
             ],
             'promotions' => [
                 'promotion_code',
-                'issue_type',
+                'promotion_issue_type',
                 'expected_discount',
                 'applied_discount',
                 'promotion_start_date',
@@ -86,7 +86,7 @@ class DefaultConfigProvider implements ConfigProviderInterface
             ],
             'products' => [
                 'product_sku',
-                'issue_type',
+                'product_issue_type',
                 'product_condition'
             ]
         ];
