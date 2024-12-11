@@ -53,7 +53,7 @@ class LayoutProcessor implements LayoutProcessorInterface
                 $dropdownFieldComponent : $baseFieldComponent;
 
             $fields[$field] = array_merge($component, [
-                'dataScope' => "contactReason.$field",
+                'dataScope' => "contactReasonForm.$field",
                 'label' => $label,
                 'sortOrder' => $sortOrder
             ]);

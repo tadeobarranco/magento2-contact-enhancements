@@ -34,6 +34,7 @@
                                     <item name="children" xsi:type="array">
                                         <item name="reason-step" xsi:type="array">
                                             <item name="component" xsi:type="string">Barranco_Contact/js/view/reason</item>
+                                            <item name="provider" xsi:type="string">contactProvider</item>
                                             <item name="sortOrder" xsi:type="string">1</item>
                                             <item name="children" xsi:type="array">
                                                 <item name="contact-reason-fieldset" xsi:type="array">

@@ -5,7 +5,7 @@
 define([
     'jquery',
     'ko',
-    'uiComponent',
+    'Magento_Ui/js/form/form',
     'uiRegistry',
     'Magento_Customer/js/customer-data',
     'Magento_Ui/js/model/messageList',
@@ -81,12 +81,24 @@ define([
          * Set contact reason information
          */
         setReasonInformation: function () {
-            $(containerId).trigger('processStart');
-
-            setTimeout(function () {
+            if(this.validateReasonInformation()) {
                 stepNavigator.next();
-                $(containerId).trigger('processStop');
-            }, 2000);
+            }
+        },
+
+        /**
+         * @return {Boolean}
+         */
+        validateReasonInformation: function () {
+            this.source.set('params.invalid', false);
+            this.source.trigger('contactReasonForm.data.validate');
+
+            if (this.source.get('params.invalid')) {
+                this.focusInvalid();
+                return false;
+            }
+
+            return true;
         }
     });
 });
