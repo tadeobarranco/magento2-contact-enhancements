@@ -9,6 +9,7 @@ define([
     'uiRegistry',
     'Magento_Customer/js/customer-data',
     'Magento_Ui/js/model/messageList',
+    'Barranco_Contact/js/action/select-category-reason',
     'Barranco_Contact/js/model/contact',
     'Barranco_Contact/js/model/reason-service',
     'Barranco_Contact/js/model/reason-validator',
@@ -22,6 +23,7 @@ define([
     registry,
     customerData,
     messageList,
+    selectCategoryReason,
     contact,
     reasonService,
     reasonValidator,
@@ -29,8 +31,6 @@ define([
     $t
 ) {
     'use strict';
-
-    let containerId = '#contact';
 
     return Component.extend({
         defaults: {
@@ -86,6 +86,10 @@ define([
             }
         },
 
+        getData: function () {
+            return this.source.get('contactReasonForm');
+        },
+
         /**
          * @return {Boolean}
          */
@@ -98,6 +102,7 @@ define([
                 return false;
             }
 
+            selectCategoryReason(this.getData());
             return true;
         }
     });
