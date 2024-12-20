@@ -5,23 +5,47 @@
 define([
     'jquery',
     'ko',
-    'uiComponent',
+    'Magento_Ui/js/form/form',
+    'uiRegistry',
     'Magento_Customer/js/customer-data',
     'Magento_Ui/js/model/messageList',
+    'Barranco_Contact/js/action/select-category-reason',
+    'Barranco_Contact/js/model/contact',
+    'Barranco_Contact/js/model/reason-service',
+    'Barranco_Contact/js/model/reason-validator',
     'Barranco_Contact/js/model/step-navigator',
-    'mage/translate'
-], function ($, ko, Component, customerData, messageList, stepNavigator, $t) {
+    'mage/translate',
+    'Barranco_Contact/js/model/reason-category-service'
+], function (
+    $,
+    ko,
+    Component,
+    registry,
+    customerData,
+    messageList,
+    selectCategoryReason,
+    contact,
+    reasonService,
+    reasonValidator,
+    stepNavigator,
+    $t
+) {
     'use strict';
-
-    let containerId = '#contact';
 
     return Component.extend({
         defaults: {
-            template: 'Barranco_Contact/reason'
+            template: 'Barranco_Contact/reason',
+            formTemplate: 'Barranco_Contact/form/reason',
+            formFieldsTemplate: 'Barranco_Contact/form/reason/fields'
         },
         visible: ko.observable(true),
+        reason: reasonService.reason,
+        isLoading: reasonService.isLoading,
 
         initialize: function () {
+            let self = this,
+                formPath = 'contact.steps.reason-step.contact-reason-fieldset',
+                fieldsPath = 'contact.steps.reason-step.reason-form-fields';
             this._super();
 
             stepNavigator.registerStep(
@@ -40,18 +64,46 @@ define([
 
                 customerData.set('success-message', {});
             }
+
+            contact.reason.subscribe(function (reason) {
+                reasonValidator.updateFields(reason, fieldsPath);
+            });
+
+            /**
+             * @todo Observe on reason form changes
+             */
+            registry.async('contactProvider')(function (contactProvider) {
+                reasonValidator.initFields(formPath);
+            })
         },
 
         /**
          * Set contact reason information
          */
         setReasonInformation: function () {
-            $(containerId).trigger('processStart');
-
-            setTimeout(function () {
+            if(this.validateReasonInformation()) {
                 stepNavigator.next();
-                $(containerId).trigger('processStop');
-            }, 2000);
+            }
+        },
+
+        getData: function () {
+            return this.source.get('contactReasonForm');
+        },
+
+        /**
+         * @return {Boolean}
+         */
+        validateReasonInformation: function () {
+            this.source.set('params.invalid', false);
+            this.source.trigger('contactReasonForm.data.validate');
+
+            if (this.source.get('params.invalid')) {
+                this.focusInvalid();
+                return false;
+            }
+
+            selectCategoryReason(this.getData());
+            return true;
         }
     });
 });

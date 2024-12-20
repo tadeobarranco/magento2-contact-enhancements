@@ -2,6 +2,8 @@
 
 namespace Barranco\Contact\Model;
 
+use Magento\Framework\Exception\NoSuchEntityException;
+
 /**
  * ConfigProviderInterface
  * @api
@@ -13,6 +15,7 @@ interface ConfigProviderInterface
      * Get contact form configurations
      *
      * @return array
+     * @throws NoSuchEntityException
      */
     public function getConfig(): array;
 }

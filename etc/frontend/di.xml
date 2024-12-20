@@ -13,4 +13,14 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Contact\Block\ContactForm">
+        <plugin name="barranco_contact_extend_contact_form" type="Barranco\Contact\Plugin\ExtendContactForm"/>
+    </type>
+    <type name="Barranco\Contact\Plugin\ExtendContactForm">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="reasonFormFields" xsi:type="object">Barranco\Contact\Block\Reason\LayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
