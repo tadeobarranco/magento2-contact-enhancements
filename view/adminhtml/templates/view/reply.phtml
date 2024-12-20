@@ -17,7 +17,7 @@ $replies = $block->getReplies();
             <span class="title"><?= $escaper->escapeHtml(__('Contact Comment')) ?></span>
         </div>
         <div class="admin__page-section-item-content">
-            <div class="contact-comment-text"><?= $escaper->escapeHtml($inbox->getComment()) ?></div>
+            <div class="contact-comment-text"><?= $inbox->getComment() ?></div>
             <?php if ($replies): ?>
                 <?php foreach ($replies as $key => $comment): ?>
                     <div class="contact-comment-text right"><?= $escaper->escapeHtml($comment) ?></div>

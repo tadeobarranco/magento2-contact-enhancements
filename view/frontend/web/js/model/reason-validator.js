@@ -67,7 +67,7 @@ define([
          */
         updateFields: function (reason, fieldsPath) {
             let reasonFormFields = registry.get(fieldsPath),
-                reasonFields = fieldsByReason[reason];
+                reasonFields = Object.keys(fieldsByReason[reason] || {});
 
             if (reasonFormFields && reasonFormFields.elems) {
                 let fields = reasonFormFields.elems();

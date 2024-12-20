@@ -35,6 +35,7 @@ class DefaultConfigProvider implements ConfigProviderInterface
         $config['storeCode'] = $this->getStoreCode();
         $config['defaultSuccessPageUrl'] = $this->getDefaultSuccessPageUrl();
         $config['fieldsByReason'] = $this->getFieldsByReason();
+        $config['labelsByIssueType'] = $this->getLabelsByIssueType();
 
         return $config;
     }
@@ -69,26 +70,50 @@ class DefaultConfigProvider implements ConfigProviderInterface
     {
         return [
             'orders' => [
-                'order_id',
-                'order_status',
-                'order_issue_type',
-                'shipping_carrier',
-                'tracking_number',
+                'order_id' => __('Order ID'),
+                'order_status' => __('Order Status'),
+                'order_issue_type' => __('Issue Type'),
+                'shipping_carrier' => __('Shipping Carrier'),
+                'tracking_number' => __('Tracking Number')
             ],
             'promotions' => [
-                'promotion_code',
-                'promotion_issue_type',
-                'expected_discount',
-                'applied_discount',
-                'promotion_start_date',
-                'promotion_end_date',
-                'cart_total'
+                'promotion_code' => __('Promotion Code'),
+                'promotion_issue_type' => __('Issue Type'),
+                'expected_discount' => __('Expected Discount'),
+                'applied_discount' => __('Applied Discount'),
+                'promotion_start_date' => __('Promotion Start Date'),
+                'promotion_end_date' => __('Promotion End Date'),
+                'cart_total' => __('Cart Total')
             ],
             'products' => [
-                'product_sku',
-                'product_issue_type',
-                'product_condition'
+                'product_sku' => __('Product SKU'),
+                'product_issue_type' => __('Issue Type'),
+                'product_condition' => __('Product Condition')
             ]
+        ];
+    }
+
+    /**
+     * Get the labels for the issue types
+     *
+     * @return array
+     */
+    private function getLabelsByIssueType(): array
+    {
+        return [
+            'shipping_delay' => __( 'Shipping Delay'),
+            'wrong_items' => __( 'Wrong Items'),
+            'missing_items' => __( 'Missing Items'),
+            'damaged_items' => __( 'Damaged Items'),
+            'cancellation_request' => __( 'Cancellation Request'),
+            'coupon_issue' => __( 'Coupon Issue'),
+            'discount_not_applied' => __( 'Discount Not Applied'),
+            'promotion_expired' => __( 'Promotion Expired'),
+            'eligibility_question' => __( 'Eligibility Question'),
+            'availability_query' => __( 'Availability Query'),
+            'technical_specification' => __( 'Technical Specification'),
+            'compatibility_question' => __( 'Compatibility Question'),
+            'quality_issue' => __( 'Quality Issue')
         ];
     }
 }
